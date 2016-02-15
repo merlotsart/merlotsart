@@ -1,0 +1,35 @@
+<table class="index_table index">
+  <tr>
+    <th>Name</th>
+    <th>Phone</th>
+    <th>Email</th>
+    <th>Attended?</th>
+    <th>Check In</th>
+    <th>Edit/Delete</th>
+  </tr>
+  <% @attendees.each do |attendee| %>
+    <tr>
+      <% if attendee.name == nil %>
+        <td><%= link_to('Add', edit_admin_attendee_path(attendee.id)) %></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      <% else %>
+        <td><%= attendee.name %></td>
+        <td><%= attendee.phone %></td>
+        <td><%= attendee.email %></td>
+        <td>
+          <% if attendee.attended == true %>
+            Yes
+          <% else %>
+            No
+          <% end %>
+        </td>
+        <td><%= button_to("Check in", checkin_admin_attendee_path(attendee.id), class: "checkin") %><%= button_to("Undo", checkout_admin_attendee_path(attendee.id), class: "checkin") %></td>
+        <td><%= link_to('Edit/Delete', edit_admin_attendee_path(attendee.id)) %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>

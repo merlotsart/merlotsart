@@ -1,0 +1,146 @@
+<div class="hero-landing clearfix">
+  <%= image_tag('experiences-hero.jpg', alt: 'hero image') %>
+  <div class="hero-header">
+    <h1>In-Studio Classes</h1>
+  </div>
+</div>
+
+<h4 class="registration">
+  Please complete your registration within <span id="time"></span> minutes.  After that, the reservation we're holding will be released to others.
+</h4>
+<%= flash[:message] %>
+<section class="order-form col-xs-12 col-sm-6 col-md-6 col-lg-6">
+  <%= form_for @order do |f| %>
+    <%= f.hidden_field :public_event_id, :value => @event.id %>
+    <%= f.hidden_field :quantity, :value => @quantity %>
+    <%= f.hidden_field :total, :value => (@event.price * @quantity) + (params[:byob_fee].to_i * @quantity * @event.byob_fee) + (params[:voucher_upgrade].to_i * @quantity * @event.voucher_upgrade_fee) + (params[:wine].to_i * @quantity * @event.unlimited_wine) + (params[:mimosas].to_i * @quantity * @event.unlimited_mimosas) - (params[:groupon_count].to_i * @event.price) %>
+      <h3>Ticket Buyer Information</h3>
+        <%= f.label :name, class: 'required' %>
+        <%= f.text_field :name, required: true, class: "form-control" %>
+        <%= f.label :phone, class: 'required' %>
+        <%= f.phone_field :phone, required: true, class: "form-control" %>
+        <%= f.label :email, class: 'required' %>
+        <%= f.email_field :email, required: true, class: "form-control" %>
+        <%= f.label :discount_code %>
+        <%= f.text_field :discount_code, class: "form-control promo-code" %>
+        <div class="promo-result"></div>
+        <% if params[:groupon_count].to_i > 0 %>
+          <%= f.label :groupon_code, class: 'required' %>
+          <%= f.text_field :groupon_code, :maxlength => 9, required: true, class: "form-control" %>
+        <% end %>
+      <%= f.fields_for :attendees do |attendees_form| %>
+      <h3>Attendee Information:</h3>
+          <%= attendees_form.label :name, class: 'required' %>
+          <%= attendees_form.text_field :name, required: true, class: "form-control" %>
+          <%= attendees_form.label :phone, class: 'required' %>
+          <%= attendees_form.phone_field :phone, required: true, class: "form-control" %>
+          <%= attendees_form.label :email, class: 'required' %>
+          <%= attendees_form.email_field :email, class: "form-control" %>
+      <% end %>
+    <% if ((@event.price * @quantity) + (params[:byob_fee].to_i * @quantity * @event.byob_fee) + (params[:voucher_upgrade].to_i * @quantity * @event.voucher_upgrade_fee) + (params[:wine].to_i * @quantity * @event.unlimited_wine) + (params[:mimosas].to_i * @quantity * @event.unlimited_mimosas) - (params[:groupon_count].to_i * @event.price)) > 0 %>
+    <h3>Payment Information:</h3>
+      <div id="payment-form"></div>
+    <% end %>
+    <h4>Total amount due: <span class="total-price-new">$<%= (@event.price * @quantity) + (params[:byob_fee].to_i * @quantity * @event.byob_fee) + (params[:voucher_upgrade].to_i * @quantity * @event.voucher_upgrade_fee) + (params[:wine].to_i * @quantity * @event.unlimited_wine) + (params[:mimosas].to_i * @quantity * @event.unlimited_mimosas) - (params[:groupon_count].to_i * @event.price) %></span></h4>
+    <div class="order-submit">
+      <%= f.submit 'Submit', class: 'btn-experiences', id: 'order-submit-btn' %> <%= link_to('Cancel and return to class page', public_event_path(@event)) %>
+    </div>
+  <% end %>
+</section>
+
+<section class="order-summary col-xs-12 col-sm-6 col-md-6 col-lg-6">
+  <h3>Order Summary</h3>
+  <table class="table">
+    <tr>
+      <th>Event Name</th>
+      <td><%= @event.name %></td>
+    </tr>
+    <tr>
+      <th>Event Address</th>
+      <td><%= @event.location.address %><br>
+      <%= @event.location.city %>, <%= @event.location.state %> <%= @event.location.zip %></td>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <td><%= @event.date.strftime("%A, %B %d, %Y") %></td>
+    </tr>
+    <tr>
+      <th>Time</th>
+      <td><%= @event.start_time.strftime("%l:%M %P") %>-<%= @event.end_time.strftime("%l:%M %P") %></td>
+    </tr>
+    <tr>
+      <th>Price</th>
+      <td>$<%= @event.price %></td>
+    </tr>
+    <tr>
+      <th>Quantity</th>
+      <td><%= @quantity %></td>
+    </tr>
+    <% if params[:byob_fee] %>
+      <tr>
+        <th>BYOB Fee</th>
+        <td>$<%= @event.byob_fee %></td>
+      </tr>
+      <tr>
+        <th>BYOB Qty</th>
+        <td><%= params[:byob_fee].to_i * @quantity %></td>
+      </tr>
+    <% end %>
+    <% if params[:voucher_upgrade] %>
+      <tr>
+        <th>Voucher Upgrade Fee</th>
+        <td>$<%= @event.voucher_upgrade_fee %></td>
+      </tr>
+      <tr>
+        <th>Voucher Upgrade Qty</th>
+        <td><%= params[:voucher_upgrade].to_i * @quantity %></td>
+      </tr>
+    <% end %>
+    <% if params[:wine] %>
+      <tr>
+        <th>Unlimited Wine Fee</th>
+        <td>$<%= @event.unlimited_wine %></td>
+      </tr>
+      <tr>
+        <th>Unlimited Wine Qty</th>
+        <td><%= params[:wine].to_i * @quantity %></td>
+      </tr>
+    <% end %>
+    <% if params[:mimosas] %>
+      <tr>
+        <th>Unlimited Mimosas Fee</th>
+        <td>$<%= @event.unlimited_mimosas %></td>
+      </tr>
+      <tr>
+        <th>Unlimited Mimosas Qty</th>
+        <td><%= params[:mimosas].to_i * @quantity %></td>
+      </tr>
+    <% end %>
+    <% if params[:groupon_count].to_i > 0 %>
+      <tr>
+        <th>Groupon Qty</th>
+        <td><%= params[:groupon_count] %></td>
+      </tr>
+    <% end %>
+    <tr class="promo-result-row"></tr>
+    <tr>
+      <th>Total</th>
+      <td class="total-price-row">$<span class="total-price-summary"><%= (@event.price * @quantity) + (params[:byob_fee].to_i * @quantity * @event.byob_fee) + (params[:voucher_upgrade].to_i * @quantity * @event.voucher_upgrade_fee) + (params[:wine].to_i * @quantity * @event.unlimited_wine) + (params[:mimosas].to_i * @quantity * @event.unlimited_mimosas) - (params[:groupon_count].to_i * @event.price) %></span></td>
+    </tr>
+  </table>
+</section>
+
+<script>
+  var clientToken = "<%= @token %>";
+  braintree.setup(clientToken, "dropin", {
+    container: "payment-form"
+  });
+  window.setTimeout(function() {
+    window.location.href = "<%= public_event_path(@event) %>";
+}, 900000);
+</script>
+<script type="text/javascript">
+  // InitiateCheckout
+// // Track when people enter the checkout flow (ex. click/landing page on checkout button)
+// fbq('track', 'InitiateCheckout');
+</script>

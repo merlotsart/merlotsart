@@ -1,0 +1,116 @@
+<div class="hero-landing clearfix">
+  <%= image_tag('experiences-hero.jpg', alt: 'hero image') %>
+  <div class="hero-header">
+    <h1>In-Studio Classes</h1>
+  </div>
+</div>
+
+<section class="show-class-info clearfix">
+  <%= image_tag @public_event.image.url(:medium), class: "col-xs-12 col-sm-6 col-md-6 col-lg-6" %>
+  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+    <h2><%= @public_event.name %></h2>
+    <h3>
+      <%= @public_event.location.name %>
+      <span>
+        <%= @public_event.date.strftime("%A") %>,
+        <%= @public_event.date.strftime("%B %d, %Y") %><br>
+        <%= @public_event.start_time.strftime("%l:%M%P") %>-
+        <%= @public_event.end_time.strftime("%l:%M%P") %>
+      </span>
+    </h3>
+    <p><%= @public_event.string_with_url(@public_event.description) %></p>
+    <% if @public_event.expired? %>
+    <% else %>
+      <%= form_tag(new_order_path, method: 'get') do %>
+        <%= hidden_field_tag(:event_id, @public_event.id) %>
+        <strong><p>Quantity: <select name="available_slots" class="qty">
+          <% @public_event.quantity_available.times do |num| %>
+              <option value="<%= num + 1 %>"><%= num + 1 %></option>
+          <% end %>
+        </select> $<span class="class-price"><%= @public_event.price %></span>/ticket</p></strong>
+        <p class="add-on-box">
+          <input type="checkbox", name="byob_fee", value="1", class="byob-fee">
+          <input type="hidden", name="byob", value="<%= @public_event.byob_fee %>", id="byob">
+          <%= label_tag(:byob_fee, "$#{@public_event.byob_fee} BYOB Fee/ticket") %> <span class="boyb-info"><a tabindex="0" class=" pop" role="button" data-toggle="popover" data-trigger="focus" title="BYOB FEE" data-content="This is a fee to bring a own bottle of wine to be consumed in the studio.  Fee covers 1 bottle of wine or case of beer.">(What's This?)</a></span>
+          <input type="checkbox", name="coupon", value="1", class="groupon-coupon">
+          <%= label_tag(:coupon, "Voucher/Gift Card") %>
+          <% if @public_event.voucher_upgrade_fee != nil && @public_event.voucher_upgrade_fee > 0 %>
+            <br>
+            <input type="checkbox", name="voucher_upgrade", value="1", class="voucher-upgrade">
+            <input type="hidden", name="voucher_upgrade_fee", value="<%= @public_event.voucher_upgrade_fee %>", id="voucher-upgrade">
+            <%= label_tag(:voucher_upgrade, "$#{@public_event.voucher_upgrade_fee} Upgrade Voucher Fee/ticket") %> <span class="boyb-info"><a tabindex="0" class=" pop" role="button" data-toggle="popover" data-trigger="focus" title="Upgrade Voucher Fee" data-content="This is an additional fee to use a voucher for a special event, 3 hour class or an experience other than the voucher's intended use.">(What's This?)</a></span>
+          <% end %>
+          <% if @public_event.unlimited_wine != nil && @public_event.unlimited_wine > 0 %>
+            <br>
+            <input type="checkbox", name="wine", value="1", class="wine">
+            <input type="hidden", name="wine_fee", value="<%= @public_event.unlimited_wine %>", id="wine">
+            <%= label_tag(:wine, "$#{@public_event.unlimited_wine} Unlimited Wine Fee/ticket") %> <span class="boyb-info"><a tabindex="0" class=" pop" role="button" data-toggle="popover" data-trigger="focus" title="Unlimited Wine Fee" data-content="This is a fee to add unlimited wine for one person, per class. ">(What's This?)</a></span>
+          <% end %>
+          <% if @public_event.unlimited_mimosas != nil && @public_event.unlimited_mimosas > 0 %>
+            <br>
+            <input type="checkbox", name="mimosas", value="1", class="mimosas">
+            <input type="hidden", name="mimosas_fee", value="<%= @public_event.unlimited_mimosas %>", id="mimosas">
+            <%= label_tag(:mimosas, "$#{@public_event.unlimited_mimosas} Unlimited Mimosas Fee/ticket") %> <span class="boyb-info"><a tabindex="0" class=" pop" role="button" data-toggle="popover" data-trigger="focus" title="Unlimited Mimosas Fee" data-content="This is a fee to add unlimited mimosas for one person, per class. ">(What's This?)</a></span>
+          <% end %>
+        </p>
+        <div class="byob-user">
+          <p>
+            BYOB Fee is something that must be paid by all Simply Paint & Groupon users if you wish to bring in your own bottle of wine.
+          </p>
+        </div>
+        <% if @public_event.groupon %>
+          <div class="groupon-user">
+            <p>
+              Groupon Quantity:
+              <select name="groupon_count" class="groupon_count">
+                <% 0...3.times do |num| %>
+                  <option value="<%= num %>"><%= num %></option>
+                <% end %>
+              </select>
+            </p>
+            <p>GROUPON USERS: Please select the number of Groupon vouchers you have.  Be ready to enter your voucher codes on the next page.</p>
+          </div>
+        <% end %>
+        <p class="total">Total Price: $<span class="total-price"><%= @public_event.price %></span></p>
+        <% if @public_event.quantity_available == 0 %>
+          <p class="btn btn-default btn-sold-out">Sold Out</p>
+        <% else %>
+          <%= submit_tag("Register", class: "btn btn-default btn-experiences") %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</section>
+
+<section class="artist-bio clearfix">
+  <%= image_tag @public_event.artist.image.url(:medium), class: "col-xs-2 col-sm-2 col-md-2 col-lg-2" %>
+  <p class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+    This class will be taught by <%= @public_event.artist.name %>.
+    <%= @public_event.artist.bio %>
+</p>
+</section>
+
+<section class="class-rules">
+  <p>Each painting session includes 16x20 canvas and art supplies. Registering for this event indicates that you agree to the terms below:</p>
+  <ul>
+    <li>Participants must be 21 and over to attend.  Please drink responsibly.</li>
+    <li>LATE ARRIVALS: Arrivals 20 minutes after the start of class will be asked to reschedule.  If you decide to attend class, we can’t guarantee the completion of your artwork, as you would have missed critical steps in the process. </li>
+    <li>Reservations and seating are first-come, first-served.</li>
+    <li>BYOB POLICY: If you bring your own bottle to the 1512 U Street studio, open or empty wine bottles may not be removed from the studio.  Each bottle is subjected to a bottle fee.</li>
+    <li>REFUNDS:  We do not offer refunds.  A credit can be issued for another event.  A 48-hour cancellation or reschedule notice is required.  </li>
+    <li>CANCELLATIONS: Classes are subject to cancellation if less than 10 painters are registered for a class.</li>
+    <li>GUEST QUANTITY:  You must enter the correct number of guests in your party.  If you enter incorrectly, we can’t guarantee accommodation for class.</li>
+  </ul>
+</section>
+<%= javascript_include_tag 'registration' %>
+<script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-34552545-1', 'auto');
+  ga('send', 'pageview');
+
+</script>

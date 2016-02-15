@@ -1,0 +1,54 @@
+<div id="main_content_wrapper">
+  <div class="main_content">
+    <div class="panel">
+      <% if @class.status == 'cancelled' %>
+        <h3>Class cancelled</h3>
+        <%= link_to('Return to class details', admin_public_event_path(@class)) %>
+      <% else %>
+        <h3>Cancel class?</h3>
+        <div class="panel_contents">
+          <p>Fill out the subject and body to send out emails to all cancelled attendees.</p>
+            <%= form_tag(refund_admin_public_event_path(@class), method: "post") do %>
+              <%= label_tag(:subject, "Email Subject") %><br>
+              <%= text_field_tag :subject, nil, class: 'form-control', required: true %><br>
+              <%= label_tag(:body, "Email Body") %><br>
+              <%= text_area_tag :body, nil, {required: true, class: 'form-control'} %><br>
+              <%= submit_tag 'Send email' %>
+              NOTE: This will cancel and refund ALL orders.  To cancel and refund a specific order, click on one of the orders below.  This cannot be undone.
+            <% end %>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>Current Orders</h3>
+        <div class="panel_contents">
+          <div class="attributes_table">
+            <table class="table">
+              <tr>
+                <th>Order Payee</th>
+                <th>Order Phone</th>
+                <th>Order Email</th>
+                <th>Order Total</th>
+                <th>Order Attendees</th>
+              </tr>
+              <% @orders.each do |order| %>
+              <tr>
+                <td><%= link_to(order.name, cancel_admin_order_path(order)) %></td>
+                <td><%= order.phone %></td>
+                <td><%= order.email %></td>
+                <td>$<%= order.total %></td>
+                <td>
+                  <ol>
+                    <% order.attendees.each do |attendee| %>
+                      <li><%= attendee.name %></li>
+                    <% end %>
+                  </ol>
+                </td>
+              </tr>
+              <% end %>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

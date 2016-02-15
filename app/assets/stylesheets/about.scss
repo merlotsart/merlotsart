@@ -1,0 +1,19 @@
+.first-about, .second-about, .third-about, .fourth-about {
+  padding: 3em;
+  img {
+    position: relative;
+    width: 100%;
+    opacity: 0.7;
+    margin-bottom: 2em;
+  }
+  p {
+    margin-bottom: 2em;
+  }
+  h4 {
+    font-size: 1.2em;
+    font-weight: 600;
+  }
+  h2 {
+    margin-bottom: 1em;
+  }
+}

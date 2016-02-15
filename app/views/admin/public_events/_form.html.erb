@@ -1,0 +1,26 @@
+<div>
+  <div>Event Details</div>
+  <div>Participants</div>
+
+  <div>
+    <%= form_for @public_event, html: { multipart: true } do |f| %>
+      <%= f.label :name, 'Class Name' %>
+      <%= f.text_field :name, required: true %>
+      <%= f.label :image, 'Class Image (will be cropped square)' %>
+      <%= f.file_field :image %>
+      <%= f.label :date %>
+      <%= f.date_field :date, required: true %>
+      <%= f.label :start_time %>
+      <%= f.time_field :start_time, required: true %>
+      <%= f.label :end_time %>
+      <%= f.time_field :end_time, required: true %>
+      <%= f.label :available_slots %>
+      <%= f.number_field :available_slots, required: true %>
+      <%= f.label :price, 'Price per ticket' %>
+      <%= f.number_field :price, required: true %>
+      <%= f.label :live %>
+      <%= f.check_box :live %>
+      <%= f.submit 'Submit' %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+source 'https://rubygems.org'
+
+
+# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rails', '4.2.1'
+gem 'pg'
+gem 'sass-rails', '~> 5.0'
+gem 'uglifier', '>= 1.3.0'
+gem 'jquery-rails'
+gem 'turbolinks'
+gem 'jbuilder', '~> 2.0'
+gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'paperclip', '~> 4.3'
+gem 'aws-sdk', '~> 1.6'
+gem 'devise'
+gem 'braintree'
+gem 'sass-css-importer'
+gem 'activeadmin', '~> 1.0.0.pre2'
+gem "obfuscate_id"
+gem 'active_admin_theme'
+
+group :development, :test do
+  gem 'pry'
+  gem 'better_errors'
+  gem 'dotenv-rails'
+  gem 'web-console', '~> 2.0'
+  gem 'spring'
+end
+
+gem 'rails_12factor', group: :production
+

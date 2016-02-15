@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Merlot's Art</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
+  <!-- Facebook Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','//connect.facebook.net/en_US/fbevents.js');
+
+  fbq('init', '973079859421530');
+  fbq('track', "PageView");</script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=973079859421530&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Facebook Pixel Code -->
+  <%= csrf_meta_tags %>
+</head>
+
+<body class="container">
+  <%= render partial: 'navbar' %>
+  <div class="container-fluid"><%= yield %></div>
+  <%= render partial: 'footer' %>
+</body>
+</html>

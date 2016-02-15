@@ -1,0 +1,88 @@
+footer {
+  color: #FCFCFC;
+  margin-top: 6em;
+  width: 100%;
+  position: relative;
+  span {
+    display: block;
+  }
+  p {
+    margin: 1em 0;
+  }
+  input[type=email] {
+    background-color: #474747;
+    border: 1px solid white;
+    color: white;
+  }
+  .btn {
+    background: #474747;
+    border: 1px solid white;
+    color: #999999;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+    -webkit-text-shadow: none !important;
+    -moz-text-shadow: none !important;
+    text-shadow: none !important;
+    &:hover {
+      color: #474747;
+      border: 1px solid white;
+      background: #999999;
+    }
+  }
+  .input-group {
+    width: 100%;
+  }
+}
+
+.footer-right {
+  width: 50%;
+  padding: 0 4em;
+  top: 25%;
+  right: 0;
+  position: absolute;
+}
+
+.footer-left {
+  position: absolute;
+  left: 10%;
+  top: 25%;
+}
+
+.footer-img {
+  background-color: #000000;
+  width: 100%;
+  max-width: 1140px;
+  opacity: 0.70;
+  position: relative;
+  z-index: -1000;
+  bottom: 0;
+}
+
+.facebook-logo {
+  width: 25px;
+  height: 25px;
+  background-size: 25px;
+  margin: 0 0.5em;
+  display: inline-block;
+}
+
+.twitter-logo {
+  width: 25px;
+  height: 25px;
+  background-size: 25px;
+  margin: 0 0.5em;
+  display: inline-block;
+}
+
+.instagram-logo {
+  width: 25px;
+  height: 25px;
+  background-size: 25px;
+  margin: 0 0.5em;
+  display: inline-block;
+}
+
+footer p img {
+  width: 25px;
+}

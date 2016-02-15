@@ -1,0 +1,16 @@
+en:
+  date:
+    formats:
+      long: "%b %e, %Y"
+  time:
+    formats:
+      long: "%l:%M%P"
+  activerecord:
+    models:
+      public_event:
+        one: Classes
+        other: Classes
+  active_admin:
+    clone_model: "Copy %{model}"
+    cancel_model: "Cancel %{model}"
+    powered_by: ""

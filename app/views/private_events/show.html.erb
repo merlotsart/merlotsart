@@ -1,0 +1,60 @@
+<div class="hero-landing clearfix">
+  <%= image_tag('private_events-hero.jpg', alt: 'hero image') %>
+  <div class="hero-header">
+    <h1>Private Event</h1>
+  </div>
+</div>
+
+<section class="private-event-show">
+  <h3>Thank you for your submission!  Someone from Merlot's Art will be in contact with you shortly.</h3>
+  <table class="table">
+    <tr>
+      <th>Name</th>
+      <td><%= @private_event.name %></td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td><%= @private_event.email %></td>
+    </tr>
+    <tr>
+      <th>Phone</th>
+      <td><%= @private_event.phone %></td>
+    </tr>
+    <tr>
+      <th>Occassion</th>
+      <td><%= @private_event.description %></td>
+    </tr>
+    <tr>
+      <th>Number of Attendees</th>
+      <td><%= @private_event.available_slots %></td>
+    </tr>
+    <tr>
+      <th>Event Type</th>
+      <td><%= @private_event.event_type %></td>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <td><%= @private_event.date.strftime("%B %d, %Y") %></td>
+    </tr>
+    <tr>
+      <th>Start Time</th>
+      <td><%= @private_event.start_time.strftime("%l:%M %P") %></td>
+    </tr>
+    <tr>
+      <th>End Time</th>
+      <td><%= @private_event.end_time.strftime("%l:%M %P") %></td>
+    </tr>
+    <tr>
+      <th>Special Requests</th>
+      <td><%= @private_event.special_request %></td>
+    </tr>
+    <tr>
+      <th>How did you hear about us?</th>
+      <td><%= @private_event.how_hear %></td>
+    </tr>
+    <tr>
+      <th>Employee Referral</th>
+      <td><%= @private_event.employee_referral %></td>
+    </tr>
+  </table>
+</section>

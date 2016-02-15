@@ -1,0 +1,43 @@
+<div id="main_content_wrapper">
+  <div class="panel">
+    <% if @order.status == 'cancelled' %>
+      <h3>Class cancelled</h3>
+      <%= link_to('Return to class details', admin_order_path(@order)) %>
+    <% else %>
+      <h3>Cancel order?</h3>
+      <div class="panel_contents">
+        <p>Fill out the subject and body to send out emails to cancelled attendees.</p>
+          <table class="table">
+            <tr>
+              <th>Order Payee</th>
+              <th>Order Phone</th>
+              <th>Order Email</th>
+              <th>Order Total</th>
+              <th>Order Attendees</th>
+            </tr>
+            <tr>
+              <td><%= @order.name %></td>
+              <td><%= @order.phone %></td>
+              <td><%= @order.email %></td>
+              <td>$<%= @order.total %></td>
+              <td>
+                <ol>
+                  <% @order.attendees.each do |attendee| %>
+                    <li><%= attendee.name %></li>
+                  <% end %>
+                </ol>
+              </td>
+            </tr>
+          </table>
+            <%= form_tag(refund_admin_order_path(@order), method: "post") do %>
+              <%= label_tag(:subject, "Email Subject") %><br>
+              <%= text_field_tag :subject, nil, class: 'form-control', required: true %><br>
+              <%= label_tag(:body, "Email Body") %><br>
+              <%= text_area_tag :body, nil, {required: true, class: 'form-control'} %><br>
+              <%= submit_tag 'Send email' %>
+              NOTE: This will cancel and refund the order.  This cannot be undone.
+            <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

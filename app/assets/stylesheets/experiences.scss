@@ -1,0 +1,129 @@
+.experiences-h1, .orders-h1 {
+  margin-top: 2em;
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+.dropdown-menus {
+  display: block;
+  padding: 0 2em;
+  button {
+    background-color: #BB2184;
+    color: white;
+    &:hover {
+      color: white;
+      background: #BB2184;
+    }
+  }
+}
+
+.class-info {
+  padding: 3em 2em;
+}
+
+.month-links {
+  text-align: center;
+  font-size: 1.3em;
+  padding: 2em;
+  span {
+    font-size: 1.3em;
+  }
+}
+
+.experience-info {
+  padding: 3em 2em;
+  .individual-class {
+    display: inline-block;
+    margin-right: 2em;
+    img {
+      margin-bottom: 1em;
+    }
+    p span {
+      display: block;
+    }
+    .class-date-location {
+      color: #8F8F8F;
+    }
+    .class-name {
+      width: 230px;
+      min-height: 50px;
+    }
+  }
+}
+
+.expired {
+    opacity: 0.6;
+  }
+
+.box {
+  cursor: pointer;
+  height: 200px;
+  width: 200px;
+  position: relative;
+  overflow: hidden;
+  margin: 2em 0;
+}
+
+.box img {
+  position: absolute;
+  left: 0;
+  transition: all 300ms ease-out;
+}
+
+.box .overbox {
+  background-color: #FFFFFF;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #303030;
+  z-index: 100;
+  transition: all 300ms ease-out;
+  opacity: 0;
+  width: 200px;
+  height: 200px;
+  padding: 30px 20px;
+}
+
+.box:hover .overbox { opacity: 0.7; }
+
+.box .overtext {
+  transition: all 300ms ease-out;
+  transform: translateY(40px);
+}
+
+.box .title {
+  font-size: 1em;
+  text-transform: uppercase;
+  opacity: 0;
+  transition-delay: 0.1s;
+  transition-duration: 0.2s;
+}
+
+.box:hover .title,
+.box:focus .title {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.box .tagline {
+  font-size: 0.7em;
+  opacity: 0;
+  transition-delay: 0.2s;
+  transition-duration: 0.2s;
+}
+
+.box:hover .tagline,
+.box:focus .tagline {
+  opacity: 1;
+  transform: translateX(0px);
+}
+
+.experiences-table {
+  margin: 2em;
+  width: 95%;
+  vertical-align: middle;
+  tr>td.vert-align {
+    vertical-align: middle;
+  }
+
+}

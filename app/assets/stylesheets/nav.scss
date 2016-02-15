@@ -1,0 +1,53 @@
+.navbar-header {
+  padding-left: 1em;
+  padding-top: 2px;
+}
+
+.navbar {
+   background-color: transparent;
+   background: transparent;
+   border-color: transparent;
+   a {
+    font-weight: 500;
+     color: #474747;
+   }
+   .navbar-brand {
+    padding: 5px 0;
+   }
+}
+
+.navbar li a { color: #000 }
+
+.navbar-nav {
+  padding-right: 1em;
+}
+
+.top-nav-scroll {
+  transition: all 0.5s ease;
+  background-color: #FCFCFC;
+  background: #FCFCFC;
+  border-color: transparent;
+}
+
+.top-nav-scroll-reverse {
+  transition: all 0.5s ease;
+  background-color: transparent;
+  background: transparent;
+  border-color: transparent;
+}
+
+
+
+@media only screen and (max-width: 766px) {
+  .collapsing, .in {background-color: #F7F7F7;}
+  .collapsing ul li a, .in ul li a {color: black !important;}
+  .glyphicon-menu-hamburger {
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 4px;
+  }
+}
+
+.glyphicon-menu-hamburger {
+  font-size: 1.3em;
+}

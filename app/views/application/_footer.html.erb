@@ -1,0 +1,36 @@
+<footer class="clearfix">
+  <div class="footer-img-div"><%= image_tag('footer.jpg', alt: 'footer image', class: "footer-img") %></div>
+  <div class="col-xs-0 col-sm-1 col-md-1"></div>
+  <div class="footer-left col-xs-6 col-sm-5 col-md-4">
+    <p>&copy; 2015 Merlot's Art</p>
+    <p>
+      <span>1512 U Street NW</span>
+      <span>Washington, DC 20009</span>
+    </p>
+    <p></p>
+    <p><%= link_to('Get in contact >', pages_path(page: 'contact')) %></p>
+  </div>
+  <div class="col-xs-0 col-sm-1 col-md-2"></div>
+  <div class="footer-right col-xs-6 col-sm-5 col-md-4">
+    <p>Get 25% off your first class and special email offers!</p>
+    <div class="row">
+      <div class="col-lg-8">
+        <form action="//merlotsart.us4.list-manage.com/subscribe/post?u=6bfd57fcf7c3ede7bfe2e6672&amp;id=e06bd33683" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+          <div class="input-group">
+            <input type="email" value="" name="EMAIL" id="mce-EMAIL" class="form-control" placeholder="Your email address">
+            <span class="input-group-btn">
+              <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn-default">
+
+            </span>
+          </div>
+        </form>
+      </div>
+    </div>
+    <p>Connect with us:
+      <%= link_to(image_tag('facebook.png'), 'https://www.facebook.com/MerlotsArt', class: 'facebook-logo') %>
+      <%= link_to(image_tag('twitter.png'), 'https://twitter.com/merlotsart', class: 'twitter-logo') %>
+      <%= link_to(image_tag('instagram.png'), 'https://instagram.com/merlotsart/', class: 'instagram-logo') %>
+    </p>
+  </div>
+  <div class="col-xs-0 col-sm-0 col-md-1"></div>
+</footer>

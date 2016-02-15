@@ -1,0 +1,15 @@
+<div id="main_content_wrapper">
+  <div class="panel">
+      <h3>Email Attendees</h3>
+      <div class="panel_contents">
+        <p>Fill out the subject and body to send out emails to all attendees.</p>
+        <%= form_tag(email_admin_public_event_path(@class), method: "post") do %>
+          <%= label_tag(:subject, "Email Subject") %><br>
+          <%= text_field_tag :subject, nil, class: 'form-control', required: true %><br>
+          <%= label_tag(:body, "Email Body") %><br>
+          <%= text_area_tag :body, nil, {required: true, class: 'form-control'} %><br>
+          <%= submit_tag 'Send email' %>
+        <% end %>
+      </div>
+    </div>
+</div>

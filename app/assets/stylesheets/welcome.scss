@@ -1,0 +1,128 @@
+.hero-landing {
+  position: relative;
+  img {
+    width: 100%;
+    position: relative;
+    opacity: 0.4;
+  }
+  .hero-text {
+    .hero-blurb {
+      position: absolute;
+      right: 8%;
+      width: 95%;
+      top: 33%;
+      max-width: 400px;
+    }
+  }
+  .hero-left-text {
+    text-align: center;
+    font-size: 1.8em;
+    color: white;
+    position: absolute;
+    bottom: 2%;
+    left: -7%;
+    text-shadow: 1px 1px 1px #1B1B1B;
+  }
+  .hero-header {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: 40%;
+  }
+}
+
+.steps {
+  background-color: #FFF;
+  text-align: center;
+  padding: 2em;
+  h1 {
+    margin-bottom: 1em;
+  }
+  img {
+    height: 200px;
+    margin-bottom: 2em;
+  }
+}
+
+.experiences {
+  background-image: image-url('pattern.png');
+  background-repeat: repeat-y repeat-x;
+  background-size: 10%;
+  background-color: #F0F0F0;
+  padding: 2em 2em 4em 2em;
+  text-align: center;
+  h1 {
+    margin-bottom: 1em;
+  }
+  img {
+    margin: 1em 0.75em 3em 0.75em;
+  }
+}
+
+.private-events {
+  padding: 4em;
+  h1 {
+    margin-bottom: 1em;
+  }
+  img {
+    opacity: 0.7;
+  }
+}
+
+.btn-experiences {
+  margin-top: 1em;
+  color: #BB2184;
+  border: 2px solid #BB2184;
+  background: transparent;
+  border-radius: 6px;
+  outline: none;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+  -webkit-text-shadow: none !important;
+  -moz-text-shadow: none !important;
+  text-shadow: none !important;
+  &:hover {
+    color: white;
+    border: 2px solid #BB2184;
+    background: #BB2184;
+  }
+}
+
+.btn-experiences-inverse {
+  color: #ffffff;
+  border: 2px solid #BB2184;
+  background: #BB2184;
+  border-radius: 6px;
+  outline: none;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+  -webkit-text-shadow: none !important;
+  -moz-text-shadow: none !important;
+  text-shadow: none !important;
+  &:hover {
+    color: #BB2184;
+    border: 2px solid #BB2184;
+    background: transparent;
+  }
+}
+
+.btn-sold-out {
+  color: #3E3E3E;
+  border: 2px solid #CCCCCC;
+  background: #CCCCCC;
+  border-radius: 6px;
+  outline: none;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+  -webkit-text-shadow: none !important;
+  -moz-text-shadow: none !important;
+  text-shadow: none !important;
+  &:hover {
+    color: #3E3E3E;
+    border: 2px solid #CCCCCC;
+    background: #CCCCCC;
+  }
+}

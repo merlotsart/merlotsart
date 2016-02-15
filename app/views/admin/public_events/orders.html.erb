@@ -1,0 +1,35 @@
+<div id="main_content_wrapper">
+  <div class="main_content">
+    <div class="panel">
+        <h3>Current Orders</h3>
+        <div class="panel_contents">
+          <div class="attributes_table">
+            <table class="table">
+              <tr>
+                <th>Order Payee</th>
+                <th>Order Phone</th>
+                <th>Order Email</th>
+                <th>Order Total</th>
+                <th>Order Attendees</th>
+              </tr>
+              <% @orders.each do |order| %>
+              <tr>
+                <td><%= link_to(order.name, cancel_admin_order_path(order)) %></td>
+                <td><%= order.phone %></td>
+                <td><%= order.email %></td>
+                <td>$<%= order.total %></td>
+                <td>
+                  <ol>
+                    <% order.attendees.each do |attendee| %>
+                      <li><%= attendee.name %></li>
+                    <% end %>
+                  </ol>
+                </td>
+              </tr>
+              <% end %>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

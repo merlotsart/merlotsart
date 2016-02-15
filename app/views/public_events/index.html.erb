@@ -1,0 +1,31 @@
+<h1>Classes</h1>
+<%= link_to("+ Add New", new_admin_public_event_path) %>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Image</th>
+    <th>Type</th>
+    <th>Name</th>
+    <th>Instructor</th>
+    <th>Date</th>
+    <th>Time</th>
+    <th>Live</th>
+    <th>Edit Details</th>
+  </tr>
+  <% @public_classes.each do |public_class| %>
+    <tr>
+      <td><%= public_class.id %></td>
+      <td><%= link_to(image_tag(public_class.image.url(:thumb)), admin_public_event_path(public_class)) %></td>
+      <td><%= public_class.event_type %></td>
+      <td><%= public_class.name %></td>
+      <td><%= public_class.artist.name %></td>
+      <td><%= public_class.date.strftime("%B %d, %Y") %></td>
+      <td>
+        <%= public_class.start_time.strftime("%l:%M %P") %>-
+        <%= public_class.end_time.strftime("%l:%M %P") %>
+      </td>
+      <td><%= public_class.live %></td>
+      <td>Edit Details</td>
+    </tr>
+  <% end %>
+</table>

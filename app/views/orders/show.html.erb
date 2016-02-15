@@ -1,0 +1,67 @@
+<!-- Facebook Conversion Code for Checkouts - confirmed orders on merlotsart.com -->
+<script>(function() {
+var _fbq = window._fbq || (window._fbq = []);
+if (!_fbq.loaded) {
+var fbds = document.createElement('script');
+fbds.async = true;
+fbds.src = '//connect.facebook.net/en_US/fbds.js';
+var s = document.getElementsByTagName('script')[0];
+s.parentNode.insertBefore(fbds, s);
+_fbq.loaded = true;
+}
+})();
+window._fbq = window._fbq || [];
+window._fbq.push(['track', '6030086983528', {'value':'0.00','currency':'USD'}]);
+</script>
+<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6030086983528&amp;cd[value]=0.00&amp;cd[currency]=USD&amp;noscript=1" /></noscript>
+
+<h1 class="orders-h1">Order Summary</h1>
+<section class="order-summary">
+  <h2>
+    Success!  <%= @order.name.capitalize %>, thank you for your purchase.  An email will be sent shortly with your order confirmation.
+  </h2>
+  <table class="table">
+    <tr>
+      <td>Buyer Name</td>
+      <td><%= @order.name %></td>
+    </tr>
+    <tr>
+      <td>Buyer Phone</td>
+      <td><%= @order.phone %></td>
+    </tr>
+    <tr>
+      <td>Buyer Email</td>
+      <td><%= @order.email %></td>
+    </tr>
+    <tr>
+      <td>Total</td>
+      <td>$<%= @order.total %></td>
+    </tr>
+    <% @attendees.each do |attendee| %>
+      <tr>
+        <td>Attendee Name</td>
+        <td><%= attendee.name %></td>
+      </tr>
+      <tr>
+        <td>Attendee Phone</td>
+        <td><%= attendee.phone %></td>
+      </tr>
+      <tr>
+        <td>Attendee Email</td>
+        <td><%= attendee.email %></td>
+      </tr>
+    <% end %>
+  </table>
+  <%= link_to('Return to class page', experiences_path(month: Date.today.month)) %>
+</section>
+<script type="text/javascript">
+  // Purchase
+  // Track purchases or checkout flow completions (ex. landing on "Thank You" or confirmation page)
+  fbq('track', 'Purchase', {value: '1.00', currency: 'USD'});
+</script>
+<script src="//platform.twitter.com/oct.js" type="text/javascript"></script>
+<script type="text/javascript">twttr.conversion.trackPid('ntqo0', { tw_sale_amount: 0, tw_order_quantity: 0 });</script>
+<noscript>
+<img height="1" width="1" style="display:none;" alt="" src="https://analytics.twitter.com/i/adsct?txn_id=ntqo0&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0" />
+<img height="1" width="1" style="display:none;" alt="" src="//t.co/i/adsct?txn_id=ntqo0&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0" />
+</noscript>

@@ -1,0 +1,5 @@
+Experience.create!(name: "Paint & Sip")
+Experience.create!(name: "Paint & Pairings")
+Experience.create!(name: "Art & Mimosas")
+Experience.create!(name: "Paint & Sip - Winery Edition")
+Experience.create!(name: "Art Live")

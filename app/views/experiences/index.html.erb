@@ -1,0 +1,145 @@
+<h1 class="experiences-h1">In-Studio Classes</h1>
+
+<section class="dropdown-menus">
+  <div class="btn-group">
+    <button type="button" class="btn btn-xs">Filter by Event Type</button>
+    <button type="button" class="btn btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span class="caret"></span>
+      <span class="sr-only">Toggle Dropdown</span>
+    </button>
+    <ul class="dropdown-menu">
+      <li><%= link_to('All', experiences_path(month: params[:month])) %></li>
+      <% @experiences.each do |experience| %>
+        <li><%= link_to(experience.name, experiences_path(params.merge(experience_id: experience.id))) %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="btn-group">
+    <button type="button" class="btn btn-xs">Filter by City</button>
+    <button type="button" class="btn btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span class="caret"></span>
+      <span class="sr-only">Toggle Dropdown</span>
+    </button>
+    <ul class="dropdown-menu">
+      <li><%= link_to('All', experiences_path(month: params[:month])) %></li>
+      <% @locations.each do |location| %>
+        <li><%= link_to(location.city, experiences_path(params.merge(location_id: location.id))) %></a></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="btn-group">
+    <button type="button" class="btn btn-xs">Change View</button>
+    <button type="button" class="btn btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span class="caret"></span>
+      <span class="sr-only">Toggle Dropdown</span>
+    </button>
+    <ul class="dropdown-menu">
+      <li><%= link_to('Grid View', experiences_path(params.merge(view: 'grid'))) %></li>
+      <li><%= link_to('List View', experiences_path(params.merge(view: ''))) %></li>
+    </ul>
+  </div>
+</section>
+
+<section class="month-links">
+  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+    <% if params[:month].to_i == 1 %>
+      <%= link_to('< December', experiences_path(params.merge(month: 12))) %>
+    <% else %>
+      <%= link_to('< ' + @previous_month, experiences_path(params.merge(month: params[:month].to_i-1))) %>
+    <% end %>
+  </div>
+  <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+    <span><%= @current_month %></span>
+  </div>
+  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+    <% if params[:month].to_i == 12 %>
+      <%= link_to('January >', experiences_path(params.merge(month: 1))) %>
+    <% else %>
+      <%= link_to(@next_month + ' >', experiences_path(params.merge(month: params[:month].to_i+1))) %>
+    <% end %>
+  </div>
+</section>
+
+<% if params[:view] == "grid" %>
+  <section class="experience-grid clearfix">
+    <table class="table table-hover experiences-table clearfix">
+      <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Location</th>
+        <th></th>
+      </tr>
+      <% @public_events.each do |public_event| %>
+        <% if public_event.expired? %>
+          <tr class="expired">
+        <% else %>
+          <tr>
+        <% end %>
+        <td class="vert-align"><%= link_to(image_tag(public_event.image.url(:thumb)), public_event_path(public_event)) %></td>
+        <td class="vert-align"><%= link_to(public_event.name, public_event_path(public_event)) %></td>
+        <td class="vert-align"><%= public_event.date.strftime("%A") %></td>
+        <td class="vert-align"><%= public_event.date.strftime("%B %d") %></td>
+        <td class="vert-align"><%= public_event.start_time.strftime("%l:%M%P") %>-<%= public_event.end_time.strftime("%l:%M%P") %></td>
+        <td class="vert-align"><%= public_event.location.name %></td>
+        <td class="vert-align"><%= link_to('Register', public_event_path(public_event)) %></td>
+      </tr>
+      <% end %>
+    </table>
+  </section>
+<% else %>
+  <section class="experience-info">
+    <% @public_events.each do |public_event| %>
+      <% if public_event.expired? %>
+        <div class="individual-class expired">
+      <% else %>
+        <div class="individual-class">
+      <% end %>
+        <div class="box">
+          <%= image_tag(public_event.image.url(:small)) %>
+        <div class="overbox">
+          <div class="title overtext"><%= link_to(public_event.name, public_event_path(public_event)) %></div>
+          <div class="tagline overtext">A local artist will teach you how to recreate a work of art, through step by step instruction.  At the end of the session, you can take home your masterpiece.</div>
+        </div>
+      </div>
+        <p class="class-name"><%= public_event.name %></p>
+        <p class="class-date-location">
+          <td class="vert-align"><%= public_event.date.strftime("%A") %></td>
+          <span><%= public_event.date.strftime("%B %d") %>,
+            <%= public_event.start_time.strftime("%l:%M%P") %>-<%= public_event.end_time.strftime("%l:%M%P") %></span>
+          <span><%= public_event.location.name %></span>
+        </p>
+        <p><%= link_to('Register', public_event_path(public_event)) %></p>
+      </div>
+    <% end %>
+  </section>
+<% end %>
+
+<div class="class-info">
+  <p>
+    To register for a class, click on the name of the painting you would like to paint.
+  </p>
+  <p>Each painting session includes 16x20 canvas and art supplies. Registering for this event indicates that you agree to the terms below:</p>
+  <ul>
+    <li>Participants must be 21 and over to attend.  Please drink responsibly.</li>
+    <li>LATE ARRIVALS: Arrivals 20 minutes after the start of class will be asked to reschedule.  If you decide to attend class, we can’t guarantee the completion of your artwork, as you would have missed critical steps in the process. </li>
+    <li>Reservations and seating are first-come, first-served.</li>
+    <li>BYOB POLICY: If you bring your own bottle to the 1512 U Street studio, open or empty wine bottles may not be removed from the studio.  Each bottle is subjected to a bottle fee.</li>
+    <li>REFUNDS:  We do not offer refunds.  A credit can be issued for another event.  A 48-hour cancellation or reschedule notice is required.  </li>
+    <li>CANCELLATIONS: Classes are subject to cancellation if less than 10 painters are registered for a class.</li>
+    <li>GUEST QUANTITY:  You must enter the correct number of guests in your party.  If you enter incorrectly, we can’t guarantee accommodation for class.</li>
+  </ul>
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-34552545-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
