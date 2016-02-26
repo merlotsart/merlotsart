@@ -2,32 +2,22 @@ class LicenseeApplicationsController < ApplicationController
 
   def new
     @licensee_application = LicenseeApplication.new
-
-    respond_to do |format|
-      format.html
-      format.js
-    end
   end
 
   def create
     @licensee_application = LicenseeApplication.create(secure_params)
 
     if @licensee_application.save
-      respond_to do |format|
-        format.html
-        format.js
-      end
+      redirect_to :thank_you
     else
-      respond_to do |format|
-        format.html
-        format.js
-      end
+      flash[:notice] = 'Sorry your request was not sent. Please make your corrections and resend.'
+      render :new
     end
   end
 
   private
 
   def secure_params
-    params.require(:model).permit(:attrs)
+    params.require(:licensee_application).permit(:first_name, :last_name, :email, :phone, :interested_locations, :comments)
   end
 end
