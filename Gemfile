@@ -25,6 +25,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'quiet_assets', '~> 1.1'
 end
 
 gem 'rails_12factor', group: :production
