@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :public_events, :private_events, :experiences
   resource :promos, only: [:show]
+  resources :licensee_applications, only: [:new, :create]
   resources :orders do
     member do
       get 'cancel'
