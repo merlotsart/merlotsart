@@ -6,10 +6,12 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-  resources :public_events, :private_events, :experiences
+  resources :public_events, only: [:index, :new, :create, :show]
+  resources :private_events, only: [:new, :create, :show]
+  resources :experiences, only: [:index]
   resource :promos, only: [:show]
   resources :licensee_applications, only: [:new, :create]
-  resources :orders do
+  resources :orders, only: [:new, :create, :show] do
     member do
       get 'cancel'
     end
