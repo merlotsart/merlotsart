@@ -15,6 +15,9 @@ class LicenseeApplicationsController < ApplicationController
     end
   end
 
+  def thank_you
+  end
+
   private
 
   def secure_params

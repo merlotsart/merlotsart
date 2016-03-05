@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :experiences, only: [:index]
   resource :promos, only: [:show]
   resources :licensee_applications, only: [:new, :create]
+  get 'thank_you', to: 'licensee_applications', as: 'thank_you'
   resources :orders, only: [:new, :create, :show] do
     member do
       get 'cancel'
