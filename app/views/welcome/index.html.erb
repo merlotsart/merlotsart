@@ -1,15 +1,10 @@
 <div class="hero-landing clearfix">
-  <%= image_tag('hero.jpg', alt: 'hero image') %>
+  <%= image_tag('hero_004.jpg', alt: 'hero image') %>
   <div class="hero-text">
 
-    <div class="hero-blurb col-xs-12 col-sm-6 col-md-5 col-lg-3">
-      <h2>Find art & cocktail experiences to let loose your inner artist.</h2>
-      <%= link_to('Explore Art Experiences', experiences_path(month: Date.today.month), class: "btn btn-default btn-experiences") %>
-    </div>
-    <div class="hero-left-text col-xs-12 col-sm-6 col-md-7 col-lg-9">
-        PHOTO TO CANVAS
-        <br>
-        PAINT BY NUMBERS CLASS
+    <div class="hero-blurb-alt">
+      <h2>Find events to paint, sip, and get artsy</h2>
+      <%= link_to('Explore Art Experiences', experiences_path(month: Date.today.month), class: "btn btn-default btn-experiences right") %>
     </div>
   </div>
 </div>

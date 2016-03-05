@@ -7,16 +7,29 @@
    background-color: transparent;
    background: transparent;
    border-color: transparent;
+
    a {
-    font-weight: 500;
+    font-weight: 100;
      color: #474747;
    }
+
    .navbar-brand {
     padding: 5px 0;
    }
 }
 
-.navbar li a { color: #000 }
+.navbar li a {
+  color: #fff;
+  opacity: 0.9;
+}
+
+.navbar li a:hover {
+  background-color: transparent !important;
+  border: 2px solid #fff !important;
+  border-radius: 7px;
+  padding: 7px;
+  margin: 6px;
+}
 
 .navbar-nav {
   padding-right: 1em;
@@ -27,6 +40,20 @@
   background-color: #FCFCFC;
   background: #FCFCFC;
   border-color: transparent;
+
+  li a {
+    color: #BB2184;
+    opacity: 0.9;
+  }
+
+  li a:hover {
+    background-color: transparent !important;
+    border: 2px solid #BB2184 !important;
+    border-radius: 7px;
+    padding: 7px;
+    margin: 6px;
+  }
+
 }
 
 .top-nav-scroll-reverse {

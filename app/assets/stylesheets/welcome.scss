@@ -1,9 +1,10 @@
 .hero-landing {
+  background: #000;
   position: relative;
   img {
     width: 100%;
     position: relative;
-    opacity: 0.4;
+    opacity: 0.75;
   }
   .hero-text {
     .hero-blurb {
@@ -12,6 +13,23 @@
       width: 95%;
       top: 33%;
       max-width: 400px;
+    }
+    .hero-blurb-alt {
+      position: absolute;
+      right: 8%;
+      width: 95%;
+      top: 50%;
+      max-width: 600px;
+
+      .right {
+        float: right;
+      }
+
+      h2 {
+        color: #fff;
+        text-align: right;
+        opacity: 0.7;
+      }
     }
   }
   .hero-left-text {
@@ -71,9 +89,9 @@
 
 .btn-experiences {
   margin-top: 1em;
-  color: #BB2184;
-  border: 2px solid #BB2184;
-  background: transparent;
+  color: #fff !important;
+  border: 2px solid #63ADB7;
+  background: #63ADB7;
   border-radius: 6px;
   outline: none;
   -webkit-box-shadow: none !important;
