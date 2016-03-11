@@ -7,6 +7,7 @@
       <%= link_to('Explore Art Experiences', experiences_path(month: Date.today.month), class: "btn btn-default btn-experiences right") %>
     </div>
   </div>
+
 </div>
 <div class="steps clearfix">
   <h1>It's easy to get started</h1>
@@ -25,15 +26,6 @@
     <p>3. Buy drinks to enjoy during class.</p>
     <p>Purchase wine by the glass or your beverage of choice and food, at select venues. </p>
   </div>
-</div>
-<div class="experiences clearfix">
-  <h1>Explore Experiences</h1>
-  <%= image_tag('experience1.jpg', alt: 'experience') %>
-  <%= image_tag('experience2.jpg', alt: 'experience') %>
-  <%= image_tag('experience3.jpg', alt: 'experience') %>
-  <%= image_tag('experience4.jpg', alt: 'experience') %>
-  <%= image_tag('experience5.jpg', alt: 'experience') %>
-  <div><%= link_to('See All Art Experiences', experiences_path(month: Date.today.month), class: "btn btn-default btn-experiences") %></div>
 </div>
 <div class="private-events clearfix">
   <div class="private-events-info col-xs-12 col-md-6 col-lg-6">
