@@ -5,41 +5,85 @@
   </div>
 </div>
 
-<section class="private-event">
-    <h3>Private Event Request</h3>
-    <%= form_for @private_event, html: { multipart: true } do |f| %>
-      <div class="form-group">
-        <div class="private-event-form-top-left col-xs-12 col-sm-6 col-md-6 col-lg-6">
-            <%= f.label :name, 'Name', class: 'required' %>
-            <%= f.text_field :name, required: true, class: 'form-control' %>
-            <%= f.label :phone, 'Phone number', class: 'required' %>
-            <%= f.telephone_field :phone, required: true, class: 'form-control' %>
-            <%= f.label :email, 'Email address', class: 'required' %>
-            <%= f.email_field :email, required: true, class: 'form-control' %>
-            <%= f.label :description, "What's the occassion?", class: 'required' %>
-            <%= f.text_area :description, required: true, placeholder: 'E.g. birthday party, corporate event, bridal shower, etc.', class: 'form-control' %>
-            <%= f.label :available_slots, 'Number of attendees', class: 'required' %>
-            <%= f.number_field :available_slots, required: true, placeholder: 'Minimum 15', class: 'form-control' %>
-            <%= f.label :event_type, 'Event type', class: 'required' %>
-            <%= f.select :event_type, [["Painting Party - 15-24 painters - $35/person(wine available for purchase; no BYOB)", "Painting Party"], ["Bring your own wine - 15-24 painters - $40/person", "Bring your own wine"], ["Art & Mimosas - 15-22 painters - $40/person(unlimited mimosas included)", "Art & Mimosas"], ["Small off-site - 22-40 painters - $35/person (+ $125 set up/travel fee)", "Small off-site"], ["Large off-site - 40+ painters - $35/person (+ $175 set up/travel fee)", "Large off-site"], ["Off-site team building (we will email available options) - $40/person (+ travel fee)", "Team building"]], {}, {class: 'form-control'}  %>
+<div class="licensee-applications clearfix">
+  <div class="col-xs-12">
+  </div>
+  <div class="col-md-8">
+  </div>
+  <div class="col-md-4 text-center">
+    <div class="licensee-application-form-wrapper">
+      <h1>Request Your Own Private Event</h1>
+      <%= form_for @private_event, html: { multipart: true } do |f| %>
+        <div class="form-group">
+          <%= f.label :name, 'Name', class: 'required sr-only' %>
+          <%= f.text_field :name, placeholder: 'Name (required)', required: true, class: 'form-control' %>
         </div>
-        <div class="private-event-form-top-right col-xs-12 col-sm-6 col-md-6 col-lg-6">
-            <%= f.label :date, class: 'required' %>
-            <%= f.date_field :date, required: true, class: 'form-control' %>
-            <%= f.label :start_time, class: 'required' %>
-            <%= f.time_field :start_time, required: true, class: 'form-control' %>
-            <%= f.label :end_time, class: 'required' %>
-            <%= f.time_field :end_time, required: true, class: 'form-control' %>
-            <%= f.label :special_request, "Special requests?" %>
-            <%= f.text_area :special_request, class: 'form-control' %>
-            <%= f.label :how_hear, 'How did you hear about us?', class: 'required' %>
-            <%= f.text_field :how_hear, required: true, class: 'form-control' %>
-            <%= f.label :employee_referral, 'Did an employee refer you?' %>
-            <%= f.text_field :employee_referral, placeholder: 'Let us know whom to thank!', class: 'form-control' %>
+        <div class="form-group">
+          <%= f.label :phone, 'Phone number', class: 'required sr-only' %>
+          <%= f.telephone_field :phone, required: true, placeholder: 'Phone Number', class: 'form-control' %>
         </div>
-        <%= f.submit 'Submit', class: 'btn-experiences btn-private-events' %> Merlot's Art will call you to confirm your event
-      </div>
-    <% end %>
+        <div class="form-group">
+          <%= f.label :email, 'Email address', class: 'required sr-only' %>
+          <%= f.email_field :email, required: true, placeholder: 'Email Address', class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :description, "What's the occassion?", class: 'required sr-only' %>
+          <%= f.text_area :description, required: true, placeholder: 'Occasion? E.g. birthday party, corporate event, bridal shower, etc.', class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :available_slots, 'Number of attendees', class: 'required sr-only' %>
+          <%= f.number_field :available_slots, required: true, placeholder: 'Total Attendees (Minimum 15)', class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :event_type, 'Event type', class: 'required sr-only' %>
+          <%= f.select :event_type, [["Painting Party - 15-24 painters - $35/person(wine available for purchase; no BYOB)", "Painting Party"], ["Bring your own wine - 15-24 painters - $40/person", "Bring your own wine"], ["Art & Mimosas - 15-22 painters - $40/person(unlimited mimosas included)", "Art & Mimosas"], ["Small off-site - 22-40 painters - $35/person (+ $125 set up/travel fee)", "Small off-site"], ["Large off-site - 40+ painters - $35/person (+ $175 set up/travel fee)", "Large off-site"], ["Off-site team building (we will email available options) - $40/person (+ travel fee)", "Team building"]], {}, {class: 'form-control'}  %>
+        </div>
+        <div class="form-group">
+          <div class="input-group">
+            <%= f.label :date, class: 'input-group-addon' do %>
+              <i class="fa fa-calendar"></i>
+            <% end %>
+            <%= f.text_field :date, placeholder: 'Event Date', required: true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-xs-6">
+            <div class="input-group">
+              <%= f.label :start_time, class: 'input-group-addon' do %>
+                <i class="fa fa-clock-o"></i>
+              <% end %>
+              <%= f.text_field :start_time, placeholder: 'Start Time', required: true, class: 'form-control' %>
+            </div>
+          </div>
+          <div class="col-xs-6">
+            <div class="input-group">
+              <%= f.label :end_time, class: 'input-group-addon' do %>
+                <i class="fa fa-clock-o"></i>
+              <% end %>
+              <%= f.text_field :end_time, placeholder: 'End Time', required: true, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+        </div>
+        <div class="form-group">
+          <%= f.label :special_request, "Special requests?", class: 'sr-only' %>
+          <%= f.text_area :special_request, placeholder: 'Please let us know about any special requests you have for your event.', class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :how_hear, 'How did you hear about us?', class: 'required sr-only' %>
+          <%= f.text_field :how_hear, required: true, placeholder: 'How did you hear about us?', class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.submit 'Submit', id: 'licensee_application_form_submit', class: 'btn btn-block btn-experiences', data: {disable_with: 'Processing...'} %>
+        </div>
+        <p class="help-block">
+          Merlot's Art will call to confirm your event
+        </p>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 </section>
 <script>

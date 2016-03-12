@@ -18,6 +18,7 @@ gem 'sass-css-importer'
 gem 'activeadmin', '~> 1.0.0.pre2'
 gem "obfuscate_id"
 gem 'active_admin_theme'
+gem 'font-awesome-rails', '~> 4.5', '>= 4.5.0.1'
 
 group :development, :test do
   gem 'pry'

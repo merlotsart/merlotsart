@@ -13,5 +13,7 @@
 // require jquery
 //= require jquery_ujs
 //= require accounting
+//= require datepicker/bootstrap-datepicker
+//= require clockpicker/clockpicker
 //= require_tree .
 
