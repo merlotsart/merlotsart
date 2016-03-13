@@ -1,18 +1,109 @@
 <div class="hero-landing private-events-header clearfix">
   <%= image_tag('private_events-hero.jpg', alt: 'hero image') %>
   <div class="hero-header clearfix">
-    <h1>Private Event</h1>
   </div>
 </div>
 
-<div class="licensee-applications clearfix">
+<div class="private-events-new clearfix">
   <div class="col-xs-12">
   </div>
   <div class="col-md-8">
+    <div class="private-events-title">
+      <h2>Book one of our artistic experiences</h2>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="private-events-class-type">
+          <%= image_tag('art_mimosas.png', alt: 'Art Mimosas', class: 'img-responsive') %>
+          <div class="center-row clearfix">
+            <div class="center-left">
+              <p>15-24 Guests: 3 Hours</p>
+            </div>
+            <div class="center-right">
+              <p>$65/person</p>
+            </div>
+          </div>
+          <div class="bottom-row">
+            <h4>Portrait Art</h4>
+            <p>
+            Submit a photo to be transformed into a paint by numbers so you
+            can create a custom portrait. Paint yourself, a pet, or a loved one.
+            Includes: canvas, paint, artist guide, 1 glass of house wine.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="private-events-class-type">
+          <%= image_tag('art_mimosas.png', alt: 'Art Mimosas', class: 'img-responsive') %>
+          <div class="center-row clearfix">
+            <div class="center-left">
+              <p>15-24 Guests: 2 Hours</p>
+              <p><em>offsite:</em> 25-40 Guests</p>
+            </div>
+            <div class="center-right">
+              <p>Starting from $40/person</p>
+            </div>
+          </div>
+          <div class="bottom-row">
+            <h4>Paint & Sip</h4>
+            <p>
+            Submit a photo to be transformed into a paint by numbers so you
+            can create a custom portrait. Paint yourself, a pet, or a loved one.
+            Includes: canvas, paint, artist guide, 1 glass of house wine.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="private-events-class-type">
+          <%= image_tag('art_mimosas.png', alt: 'Art Mimosas', class: 'img-responsive') %>
+          <div class="center-row clearfix">
+            <div class="center-left">
+              <p>15-24 Guests: 2 Hours</p>
+              <p><em>offsite:</em> 25-40 Guests</p>
+            </div>
+            <div class="center-right">
+              <p>Starting from $35/person</p>
+            </div>
+          </div>
+          <div class="bottom-row">
+            <h4>Art & Mimosas</h4>
+            <p>
+            Submit a photo to be transformed into a paint by numbers so you
+            can create a custom portrait. Paint yourself, a pet, or a loved one.
+            Includes: canvas, paint, artist guide, 1 glass of house wine.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="private-events-class-type">
+          <%= image_tag('art_mimosas.png', alt: 'Art Mimosas', class: 'img-responsive') %>
+          <div class="center-row clearfix">
+            <div class="center-left">
+              <p>15-24 Guests: 2 Hours</p>
+              <p><em>offsite:</em> 25-40 Guests</p>
+            </div>
+            <div class="center-right">
+              <p>Starting from $35/person</p>
+            </div>
+          </div>
+          <div class="bottom-row">
+            <h4>Art & Mimosas</h4>
+            <p>
+            Submit a photo to be transformed into a paint by numbers so you
+            can create a custom portrait. Paint yourself, a pet, or a loved one.
+            Includes: canvas, paint, artist guide, 1 glass of house wine.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="col-md-4 text-center">
     <div class="licensee-application-form-wrapper">
-      <h1>Request Your Own Private Event</h1>
+      <h1>Request A Party</h1>
       <%= form_for @private_event, html: { multipart: true } do |f| %>
         <div class="form-group">
           <%= f.label :name, 'Name', class: 'required sr-only' %>
