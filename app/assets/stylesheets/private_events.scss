@@ -44,15 +44,17 @@
 
   .private-events-class-type {
     margin: 0 auto 1em auto;
-    border: 1px solid #000;
+    border: 1px solid #888;
   }
 
   .center-row {
-    border-top: 1px solid #000;
-    border-bottom: 1px solid #000;
-    background-color: #acf3d5;
+    text-align: center;
+    color: #fff;
+    border-top: 1px solid #888;
+    border-bottom: 1px solid #888;
+    background-color: #79CBCB;
     font-weight: 700;
-    font-size: 14px;
+    font-size: 12px;
 
   }
 
@@ -60,8 +62,8 @@
     padding: 0 5px;
     float: left;
     width: 50%;
-    background-color: #cccccc;
-    border-right: 1px solid #000;
+    background-color: #666666;
+    border-right: 1px solid #888;
 
     p { margin: 0; }
   }
