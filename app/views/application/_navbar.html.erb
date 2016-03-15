@@ -5,7 +5,10 @@
         <span class="sr-only">Toggle navigation</span>
         <i class="glyphicon glyphicon-menu-hamburger"></i>
       </button>
-      <%= link_to(image_tag('logo.png', alt: 'brand logo'), root_path, class: 'navbar-brand') %>
+      <%= link_to root_path, class: 'navbar-brand' do %>
+        <%= image_tag('merlotsart_logo_white.png', alt: 'Merlots Art', class: 'merlots-logo-white')%>
+        <%= image_tag('merlotsart_logo_color.png', alt: 'Merlots Art', class: 'merlots-logo-color', style: 'display:none;')%>
+      <% end %>
     </div>
 
     <div class="collapse navbar-collapse container" id="bs-example-navbar-collapse-1">
