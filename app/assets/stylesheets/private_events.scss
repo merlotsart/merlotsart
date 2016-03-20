@@ -53,8 +53,11 @@
     border-top: 1px solid #888;
     border-bottom: 1px solid #888;
     background-color: #79CBCB;
-    font-weight: 700;
-    font-size: 12px;
+    font-size: 8px;
+
+    @media(min-width: 768px) {
+      font-size: 11px;
+    }
 
   }
 
