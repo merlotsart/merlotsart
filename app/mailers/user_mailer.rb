@@ -43,4 +43,9 @@ class UserMailer < ApplicationMailer
     @params = params
     mail(to: 'info@merlotsart.com', subject: "Partner With Us Contact Form Message")
   end
+
+  def licensee_application(licensee_application)
+    @licensee_application = licensee_application
+    mail(to: 'info@merlotsart.com', subject: "New Licensee Application")
+  end
 end

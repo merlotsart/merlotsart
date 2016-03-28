@@ -5,9 +5,10 @@ class LicenseeApplicationsController < ApplicationController
   end
 
   def create
-    @licensee_application = LicenseeApplication.create(secure_params)
+    @licensee_application = LicenseeApplication.build(secure_params)
 
     if @licensee_application.save
+      UserMailer.licensee_application(@licensee_application).deliver_now
       redirect_to :thank_you
     else
       flash[:notice] = 'Sorry your request was not sent. Please make your corrections and resend.'
