@@ -5,7 +5,7 @@ class LicenseeApplicationsController < ApplicationController
   end
 
   def create
-    @licensee_application = LicenseeApplication.build(secure_params)
+    @licensee_application = LicenseeApplication.new(secure_params)
 
     if @licensee_application.save
       UserMailer.licensee_application(@licensee_application).deliver_now
