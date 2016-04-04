@@ -41,11 +41,11 @@ class UserMailer < ApplicationMailer
 
   def partner(params)
     @params = params
-    mail(to: 'info@merlotsart.com', subject: "Partner With Us Contact Form Message")
+    mail(to: 'partnerships@merlotsart.com', subject: "Partner With Us Contact Form Message")
   end
 
   def licensee_application(licensee_application)
     @licensee_application = licensee_application
-    mail(to: 'info@merlotsart.com', subject: "New Licensee Application")
+    mail(to: 'partnerships@merlotsart.com', subject: "New Licensee Application")
   end
 end
