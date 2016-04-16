@@ -42,7 +42,7 @@
     <% end %>
     <h4>Total amount due: <span class="total-price-new">$<%= (@event.price * @quantity) + (params[:byob_fee].to_i * @quantity * @event.byob_fee) + (params[:voucher_upgrade].to_i * @quantity * @event.voucher_upgrade_fee) + (params[:wine].to_i * @quantity * @event.unlimited_wine) + (params[:mimosas].to_i * @quantity * @event.unlimited_mimosas) - (params[:groupon_count].to_i * @event.price) %></span></h4>
     <div class="order-submit">
-      <%= f.submit 'Submit', class: 'btn-experiences', id: 'order-submit-btn' %> <%= link_to('Cancel and return to class page', public_event_path(@event)) %>
+      <%= f.submit 'Submit', class: 'btn-experiences', id: 'order-submit-btn', disable_with: 'Processing...' %> <%= link_to('Cancel and return to class page', public_event_path(@event)) %>
     </div>
   <% end %>
 </section>
