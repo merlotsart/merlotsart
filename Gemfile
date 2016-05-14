@@ -23,6 +23,7 @@ gem 'figaro', '~> 1.1', '>= 1.1.1'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
+  gem 'factory_girl_rails'
   gem 'pry'
   gem 'better_errors'
   gem 'dotenv-rails'
