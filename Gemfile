@@ -22,12 +22,17 @@ gem 'font-awesome-rails', '~> 4.5', '>= 4.5.0.1'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 
 group :development, :test do
+  gem 'rspec-rails', '~> 3.0'
   gem 'pry'
   gem 'better_errors'
   gem 'dotenv-rails'
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'quiet_assets', '~> 1.1'
+end
+
+group :test do
+  gem 'database_cleaner'
 end
 
 gem 'rails_12factor', group: :production
