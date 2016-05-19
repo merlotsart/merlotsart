@@ -8,3 +8,24 @@
     display: block;
   }
 }
+@media screen and (max-width: 736px) {
+	.contact-form {
+		padding: 0;
+		margin-bottom: 15px;
+	}
+	.contact-info {
+		padding: 20px;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.contact-info {
+		padding: 0;
+		margin-top: 20px;
+	}
+	.contact-form {
+		padding: 0;
+		margin-bottom: 10px;
+	}
+}
+

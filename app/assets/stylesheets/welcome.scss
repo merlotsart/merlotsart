@@ -134,3 +134,133 @@
     background: #CCCCCC;
   }
 }
+
+/* mobile responsive */
+@media screen and (max-width: 736px) {
+  .hero-header {
+    display: none;
+  }
+  .steps {
+    padding: 0;
+  }
+  .private-events {
+    padding: 0;
+    .private-events-info {
+      h1 {
+        text-align: center;
+      }
+      .btn-experiences {
+        position: relative;
+        left: 39%;
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 568px) {
+  .hero-blurb-alt {
+    right: 0% !important;
+    width: 100% !important;
+    top: 40% !important;
+    
+    h2 {
+      text-align: center !important;
+    }
+    .right {
+      margin-right: 10px;
+    }
+  }
+  .private-events .btn-experiences {
+    position: relative;
+    left: 35% !important;
+    margin-bottom: 20px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .hero-blurb-alt {
+    right: 0% !important;
+    width: 384px !important;
+    
+    h2 {
+      text-align: center !important;
+      margin: 0;
+      font-size: 21px;
+    }
+
+    .right {
+      float: none !important;
+    }
+  }
+  .hero-header {
+    display: none;
+  }
+  .steps {
+    padding: 1em 0;
+  }
+  .private-events {
+    padding: 0;
+
+    h1 {
+      font-size: 33px;
+    }
+
+    ul {
+      padding: 19px;
+      margin-bottom: 0px;
+    }
+
+    .btn-experiences {
+      margin-top: 0;
+      left: 27% !important;
+      margin-bottom: 23px !important;
+    }
+  }      
+}
+@media screen and (max-width: 375px) {
+  .hero-blurb-alt {
+    width: 345px !important;
+
+    h2 {
+      text-align: center;
+      font-size: 19px;
+    }
+  }
+  .steps {
+    h1 {
+      font-size: 33px;
+    }
+  }
+  .private-events {
+    h1 {
+      font-size: 24px;
+    }
+    .btn-experiences {
+      left: 24% !important;
+    }
+  }
+}
+@media screen and (max-width: 320px) {
+  .hero-blurb-alt {
+    width: 290px !important;
+
+    h2 {
+      text-align: center;
+      font-size: 16px;
+    }
+
+    .btn-experiences {
+      left: 1.5% !important;
+      margin-right: 0;
+    }
+  }
+  .steps {
+    h1 {
+      font-size: 28px;
+    }
+  }
+  .private-events {
+    .btn-experiences {
+      left: 19.5% !important;
+    }
+  }
+}

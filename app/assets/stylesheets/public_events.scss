@@ -48,3 +48,16 @@
 .popover{
     min-width: 250px; /* Max Width of the popover (depending on the container!) */
 }
+
+/* mobile responsive */
+@media screen and (max-width: 736px) {
+  .show-class-info {
+    padding: 2em 0em 1em 0em;
+  }
+  .artist-bio {
+    padding: 0em;
+  }
+  .class-rules {
+    padding: 1em;
+  }
+}

@@ -15,4 +15,27 @@
     }
   }
 }
+@media screen and (max-width: 736px) {
+  .licensee-application-title {
+    h2 {
+      text-align: center;
+    }
+  }
+}
+@media screen and (max-width: 568px) {
+  .licensee-application-title {
+    h2 {
+      text-align: center;
+      font-size: 25px;
+    }
+  }
+}
+@media screen and (max-width: 480px) {
+  .licensee-applications {
+    padding: 0;
+    h2 {
+      font-size: 21px !important;
+    }
+  }  
+}
 

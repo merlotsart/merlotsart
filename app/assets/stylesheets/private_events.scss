@@ -39,7 +39,7 @@
       margin-bottom: 10px;
       color: #BB2184;
       line-height: 1.3em;
-    }
+    }    
   }
 
   .private-events-class-type {
@@ -54,11 +54,6 @@
     border-bottom: 1px solid #888;
     background-color: #79CBCB;
     font-size: 8px;
-
-    @media(min-width: 768px) {
-      font-size: 11px;
-    }
-
   }
 
   .center-left {
@@ -89,5 +84,91 @@
     p {
       font-size: 12px;
     }
+  }
+}
+
+/* mobile responsive */
+@media screen and (min-width: 768px) {
+  .center-row {
+    font-size: 11px;
+  }
+}
+@media screen and (max-width: 736px) {
+  .private-events-title {
+    h2 {
+      text-align: center;
+    }  
+  }
+  .center-row {
+    font-size: 15px !important;
+  }  
+}
+@media screen and (max-width: 568px) {
+  .private-events-title {
+    h2 {
+      text-align: center;
+      font-size: 25px;
+    }
+  }
+  .clockpicker-align-left {
+    left: 154px !important;
+    .arrow {
+      display: none !important;      
+    }
+  }
+}
+@media screen and (max-width: 480px) {
+  .private-events-new {
+    padding: 0;
+  }  
+  .private-events-title {
+    h2 {
+      font-size: 21px;
+    }
+  }
+  .center-row {
+    font-size: 12px !important;
+  }
+  .clockpicker-align-left {
+    left: 82px !important;
+    .arrow {
+      display: none !important;      
+    }
+  }
+  
+}
+@media screen and (max-width: 375px) {
+  .private-events-title {
+    h2 {
+      font-size: 18px;
+    }
+  }
+  .clockpicker-align-left {
+    left: 64px !important;
+  }
+}
+@media screen and (max-width: 320px) {
+  .licensee-application-form-wrapper {
+    h1 {
+      font-size: 30px;
+      margin: 0 0 10px;
+    }
+  }
+  .help-block {
+    font-size: 13px;
+  }
+  .private-events-title {
+    h2 {
+      font-size: 15px;
+    }
+  }
+  .center-row {
+    font-size: 10px !important;
+  }
+  .clockpicker-align-left {
+    left: 35px !important;
+  }
+  #private_event_start_time, #private_event_end_time {
+    padding: 3px;
   }
 }

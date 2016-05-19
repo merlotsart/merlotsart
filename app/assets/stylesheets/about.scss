@@ -17,3 +17,23 @@
     margin-bottom: 1em;
   }
 }
+@media screen and (max-width: 736px) {
+  .fourth-about {
+    padding: 0;
+  }  
+}
+@media screen and (max-width: 667px) {
+  .first-about {
+    padding: 0;
+  }  
+}
+@media screen and (max-width: 480px) {
+  .first-about, .fourth-about {
+    padding: 0;
+  }  
+}
+@media screen and (max-width: 320px) {
+  .fourth-about {
+    padding: 0;
+  }  
+}

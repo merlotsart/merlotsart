@@ -52,9 +52,10 @@ textarea {
   margin: 1em 0;
 }
 
+/* mobile responsive */
 @media screen and (max-width: 480px) {
   .hero-text {
-    padding-bottom: 70px;
+    /*padding-bottom: 70px;*/
     font-size: 0.8em;
   }
   .hero-left-text {
@@ -65,4 +66,34 @@ textarea {
     /*margin-bottom: 50px;*/
     text-align: center;
   }
+  .experience-info .individual-class, .individual-class .box, .experience-info .individual-class img, .box .overbox { 
+    width: 100%;
+  }
+  .experience-info .individual-class .class-name { 
+    min-height: 0;
+    width: 100%;
+  }
 }
+
+@media screen and (min-width: 568px) and (max-width: 736px) {
+  .experience-info .individual-class { 
+    float: left;
+    width: 45%;
+    margin: 0 2.5%;
+  }
+  .individual-class .box, .experience-info .individual-class img, .box .overbox { 
+    width: 100%;
+  }
+  .experience-info .individual-class .class-name { 
+    width: 100%;
+    min-height: 0;
+  }
+}
+
+@media screen and (max-width: 568px) { 
+  .month-links a { 
+    font-size: 0.8em;
+    margin: 0 -15px;
+  }
+}
+
