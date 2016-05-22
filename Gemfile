@@ -30,6 +30,7 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'quiet_assets', '~> 1.1'
+  gem 'timecop', '~> 0.8.1'
 end
 
 group :test do
