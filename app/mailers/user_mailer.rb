@@ -36,7 +36,7 @@ class UserMailer < ApplicationMailer
 
   def contact(params)
     @params = params
-    mail(to: 'info@merlotsart.com', subject: "User Contact Form Message")
+    mail(to: 'hello@merlotsart.com', subject: "User Contact Form Message")
   end
 
   def partner(params)
