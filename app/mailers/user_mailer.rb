@@ -20,7 +20,7 @@ class UserMailer < ApplicationMailer
   def private_event(event)
     @user = event.name
     @private_event = event
-    mail(to: event.email, cc: 'info@merlotsart.com', subject: 'Private Event Confirmation')
+    mail(to: event.email, cc: 'events@merlotsart.com', subject: 'Private Event Confirmation')
   end
 
   def confirmation(order)
