@@ -1,5 +1,11 @@
-<h1 class="experiences-h1">In-Studio Classes</h1>
+<div class="hero-landing clearfix">
+  <%= image_tag('about-hero.jpg', alt: 'hero image') %>
+  <div class="hero-header">
+    <h1 class="hidden">In-Studio Classes</h1>
+  </div>
+</div>
 
+<h1 class="text-center purple">In-Studio Classes</h1>
 <section class="dropdown-menus">
   <div class="btn-group">
     <button type="button" class="btn btn-xs">Filter by Event Type</button>
@@ -51,7 +57,7 @@
     <% end %>
   </div>
   <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-    <span><%= @current_month %></span>
+    <span><%= "#{@current_month}" %></span>
   </div>
   <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
     <% if params[:month].to_i == 12 %>
@@ -93,24 +99,25 @@
 <% else %>
   <section class="experience-info">
     <% @public_events.each do |public_event| %>
-      <% if public_event.expired? %>
-        <div class="individual-class expired">
-      <% else %>
-        <div class="individual-class">
-      <% end %>
-        <div class="box">
-          <%= image_tag(public_event.image.url(:small)) %>
-        <div class="overbox">
-          <div class="title overtext"><%= link_to(public_event.name, public_event_path(public_event)) %></div>
-          <div class="tagline overtext">A local artist will teach you how to recreate a work of art, through step by step instruction.  At the end of the session, you can take home your masterpiece.</div>
-        </div>
-      </div>
+      <% public_event.expired? ? event_class = "expired" : event_class = '' %>
+      <div class="individual-class <%= "#{event_class}" %>">
+        <%= link_to public_event_path(public_event) do %>
+          <div class="box">
+            <%= image_tag(public_event.image.url(:small)) %>
+            <div class="overbox">
+              <div class="title overtext purple"><%= public_event.name %></div>
+              <div class="tagline overtext">A local artist will teach you how to recreate a work of art, through step by step instruction.  At the end of the session, you can take home your masterpiece.</div>
+            </div>
+          </div>
+        <% end %>
         <p class="class-name"><%= public_event.name %></p>
         <p class="class-date-location">
-          <td class="vert-align"><%= public_event.date.strftime("%A") %></td>
-          <span><%= public_event.date.strftime("%B %d") %>,
-            <%= public_event.start_time.strftime("%l:%M%P") %>-<%= public_event.end_time.strftime("%l:%M%P") %></span>
-          <span><%= public_event.location.name %></span>
+        <td class="vert-align"><%= public_event.date.strftime("%A") %></td>
+        <span>
+          <%= public_event.date.strftime("%B %d") %>,
+          <%= public_event.start_time.strftime("%l:%M%P") %>-<%= public_event.end_time.strftime("%l:%M%P") %>
+        </span>
+        <span><%= public_event.location.name %></span>
         </p>
         <p><%= link_to('Register', public_event_path(public_event)) %></p>
       </div>
@@ -120,7 +127,7 @@
 
 <div class="class-info">
   <p>
-    To register for a class, click on the name of the painting you would like to paint.
+  To register for a class, click on the name of the painting you would like to paint.
   </p>
   <p>Each painting session includes 16x20 canvas and art supplies. Registering for this event indicates that you agree to the terms below:</p>
   <ul>
@@ -134,12 +141,12 @@
   </ul>
 </div>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-34552545-1', 'auto');
-  ga('send', 'pageview');
+ga('create', 'UA-34552545-1', 'auto');
+ga('send', 'pageview');
 
 </script>
