@@ -183,6 +183,62 @@ RSpec.describe CheckPromo, type: :model do
     end
   end
 
+  describe '#calculate_amount_discount' do
+    it 'returns the total after an amount discount' do
+      promo = create(:promo,
+                     discount_type: :amount,
+                     discount_amount: 7)
+      discount_code = promo.code
+      subtotal = 10
+
+      response = CheckPromo.new(discount_code, subtotal).send(:apply_discount)
+
+      expect(response).to eq 3.0
+      expect(response).to be_a BigDecimal
+    end
+  end
+  describe '#total' do
+    context "when discount type is percentage" do
+      it "returns the formatted total in dollars" do
+        promo = create(:promo,
+                       discount_type: :percentage,
+                       discount_percentage: 50)
+        discount_code = promo.code
+        subtotal = 10
+
+        response = CheckPromo.new(discount_code, subtotal).total
+
+        expect(response).to eq "$5.00"
+      end
+    end
+
+    context "when discount type is amount" do
+      it "returns the formatted total in dollars" do
+        promo = create(:promo,
+                       discount_type: :amount,
+                       discount_amount: 5.55)
+        discount_code = promo.code
+        subtotal = 10
+
+        response = CheckPromo.new(discount_code, subtotal).total
+
+        expect(response).to eq "$4.45"
+      end
+    end
+
+    context "when discount type is nil" do
+      it "returns the formatted total in dollars" do
+        promo = create(:promo, discount_percentage: 33)
+        discount_code = promo.code
+        subtotal = 10
+
+        response = CheckPromo.new(discount_code, subtotal).total
+
+        expect(response).to eq "$6.70"
+      end
+    end
+  end
+
   describe '#promo' do
     xit 'finds the promo via the provided code' do
       promo = create(:promo)

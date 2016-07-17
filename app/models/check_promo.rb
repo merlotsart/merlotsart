@@ -51,11 +51,11 @@ class CheckPromo
 
   def total
     if @promo.discount_type == 'percentage'
-      "$" + sprintf("%.2f", @percentage)
+      "$" + sprintf("%.2f", @percentage ||= calculate_percentage_discount)
     elsif @promo.discount_type == 'amount'
-      "$" + sprintf("%.2f", @amount)
+      "$" + sprintf("%.2f", @amount ||= calculate_amount_discount)
     elsif @promo.discount_type == nil
-      "$" + sprintf("%.2f", @percentage)
+      "$" + sprintf("%.2f", @percentage ||= calculate_percentage_discount)
     else
     end
   end
