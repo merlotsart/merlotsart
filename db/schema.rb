@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160226153957) do
+ActiveRecord::Schema.define(version: 20160625155023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -166,11 +166,13 @@ ActiveRecord::Schema.define(version: 20160226153957) do
     t.string   "email"
     t.string   "code"
     t.integer  "discount_percentage"
-    t.integer  "number_of_uses",       default: 1
-    t.integer  "number_of_times_used", default: 0
-    t.date     "expiration_date",      default: '2017-02-15'
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
+    t.integer  "number_of_uses",                               default: 1
+    t.integer  "number_of_times_used",                         default: 0
+    t.date     "expiration_date",                              default: '2017-02-15'
+    t.datetime "created_at",                                                          null: false
+    t.datetime "updated_at",                                                          null: false
+    t.integer  "discount_type"
+    t.decimal  "discount_amount",      precision: 8, scale: 2
   end
 
   add_index "promos", ["code", "email"], name: "index_promos_on_code_and_email", unique: true, using: :btree
