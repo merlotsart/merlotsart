@@ -12,35 +12,46 @@
   <%= form_for @order do |f| %>
     <%= f.hidden_field :public_event_id, :value => @event.id %>
     <%= f.hidden_field :quantity, :value => @quantity %>
+
+    <!-- NEEDS REFACTOR! Really? Who can read this? -->
     <%= f.hidden_field :total, :value => (@event.price * @quantity) + (params[:byob_fee].to_i * @quantity * @event.byob_fee) + (params[:voucher_upgrade].to_i * @quantity * @event.voucher_upgrade_fee) + (params[:wine].to_i * @quantity * @event.unlimited_wine) + (params[:mimosas].to_i * @quantity * @event.unlimited_mimosas) - (params[:groupon_count].to_i * @event.price) %>
-      <h3>Ticket Buyer Information</h3>
-        <%= f.label :name, class: 'required' %>
-        <%= f.text_field :name, required: true, class: "form-control" %>
-        <%= f.label :phone, class: 'required' %>
-        <%= f.phone_field :phone, required: true, class: "form-control" %>
-        <%= f.label :email, class: 'required' %>
-        <%= f.email_field :email, required: true, class: "form-control" %>
-        <%= f.label :discount_code %>
-        <%= f.text_field :discount_code, class: "form-control promo-code" %>
-        <div class="promo-result"></div>
-        <% if params[:groupon_count].to_i > 0 %>
-          <%= f.label :groupon_code, class: 'required' %>
-          <%= f.text_field :groupon_code, :maxlength => 9, required: true, class: "form-control" %>
-        <% end %>
-      <%= f.fields_for :attendees do |attendees_form| %>
+    <!-- END NEEDS REFACTOR! Really? Who can read this? -->
+
+    <h3>Ticket Buyer Information</h3>
+    <%= f.label :name, class: 'required' %>
+    <%= f.text_field :name, required: true, class: "form-control" %>
+    <%= f.label :phone, class: 'required' %>
+    <%= f.phone_field :phone, required: true, class: "form-control" %>
+    <%= f.label :email, class: 'required' %>
+    <%= f.email_field :email, required: true, class: "form-control" %>
+    <%= f.label :discount_code %>
+    <%= f.text_field :discount_code, class: "form-control promo-code" %>
+
+    <div class="promo-result"></div>
+    <% if params[:groupon_count].to_i > 0 %>
+      <%= f.label :groupon_code, class: 'required' %>
+      <%= f.text_field :groupon_code, :maxlength => 9, required: true, class: "form-control" %>
+    <% end %>
+
+    <%= f.fields_for :attendees do |attendees_form| %>
       <h3>Attendee Information:</h3>
-          <%= attendees_form.label :name, class: 'required' %>
-          <%= attendees_form.text_field :name, required: true, class: "form-control" %>
-          <%= attendees_form.label :phone, class: 'required' %>
-          <%= attendees_form.phone_field :phone, required: true, class: "form-control" %>
-          <%= attendees_form.label :email, class: 'required' %>
-          <%= attendees_form.email_field :email, class: "form-control" %>
-      <% end %>
+      <%= attendees_form.label :name, class: 'required' %>
+      <%= attendees_form.text_field :name, required: true, class: "form-control" %>
+      <%= attendees_form.label :phone, class: 'required' %>
+      <%= attendees_form.phone_field :phone, required: true, class: "form-control" %>
+      <%= attendees_form.label :email, class: 'required' %>
+      <%= attendees_form.email_field :email, class: "form-control" %>
+    <% end %>
+
+    <!-- NEEDS REFACTOR! Really? Who can read this? -->
     <% if ((@event.price * @quantity) + (params[:byob_fee].to_i * @quantity * @event.byob_fee) + (params[:voucher_upgrade].to_i * @quantity * @event.voucher_upgrade_fee) + (params[:wine].to_i * @quantity * @event.unlimited_wine) + (params[:mimosas].to_i * @quantity * @event.unlimited_mimosas) - (params[:groupon_count].to_i * @event.price)) > 0 %>
-    <h3>Payment Information:</h3>
+      <h3>Payment Information:</h3>
       <div id="payment-form"></div>
     <% end %>
+
     <h4>Total amount due: <span class="total-price-new">$<%= (@event.price * @quantity) + (params[:byob_fee].to_i * @quantity * @event.byob_fee) + (params[:voucher_upgrade].to_i * @quantity * @event.voucher_upgrade_fee) + (params[:wine].to_i * @quantity * @event.unlimited_wine) + (params[:mimosas].to_i * @quantity * @event.unlimited_mimosas) - (params[:groupon_count].to_i * @event.price) %></span></h4>
+    <!-- END NEEDS REFACTOR! Really? Who can read this? -->
+
     <div class="order-submit">
       <%= f.submit 'Submit', class: 'btn-experiences', id: 'order-submit-btn', disable_with: 'Processing...' %> <%= link_to('Cancel and return to class page', public_event_path(@event)) %>
     </div>
@@ -75,6 +86,8 @@
       <th>Quantity</th>
       <td><%= @quantity %></td>
     </tr>
+
+    <!-- NEEDS REFACTOR! Create addon hash, iterate over results -->
     <% if params[:byob_fee] %>
       <tr>
         <th>BYOB Fee</th>
@@ -115,6 +128,8 @@
         <td><%= params[:mimosas].to_i * @quantity %></td>
       </tr>
     <% end %>
+    <!-- END NEEDS REFACTOR! Create addon hash, iterate over results -->
+
     <% if params[:groupon_count].to_i > 0 %>
       <tr>
         <th>Groupon Qty</th>
@@ -124,7 +139,11 @@
     <tr class="promo-result-row"></tr>
     <tr>
       <th>Total</th>
-      <td class="total-price-row">$<span class="total-price-summary"><%= (@event.price * @quantity) + (params[:byob_fee].to_i * @quantity * @event.byob_fee) + (params[:voucher_upgrade].to_i * @quantity * @event.voucher_upgrade_fee) + (params[:wine].to_i * @quantity * @event.unlimited_wine) + (params[:mimosas].to_i * @quantity * @event.unlimited_mimosas) - (params[:groupon_count].to_i * @event.price) %></span></td>
+
+      <!-- NEEDS REFACTOR! No calculations in the template! -->
+      <td class="total-price-row">$<span class="total-price-summary" id="subtotal"><%= (@event.price * @quantity) + (params[:byob_fee].to_i * @quantity * @event.byob_fee) + (params[:voucher_upgrade].to_i * @quantity * @event.voucher_upgrade_fee) + (params[:wine].to_i * @quantity * @event.unlimited_wine) + (params[:mimosas].to_i * @quantity * @event.unlimited_mimosas) - (params[:groupon_count].to_i * @event.price) %></span></td>
+      <!-- END NEEDS REFACTOR! No calculations in the template! -->
+
     </tr>
   </table>
 </section>
