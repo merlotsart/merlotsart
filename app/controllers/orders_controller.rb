@@ -9,23 +9,28 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @event    = PublicEvent.find_by_id(params[:order][:public_event_id])
-    @order    = Order.new(order_params)
-    @quantity = params[:order][:quantity].to_i
-    @token    = Braintree::ClientToken.generate
-    promo     = CheckPromo.new(params[:order][:discount_code])
-    if promo.valid?
-      discount = promo.discount
-    else
-      discount = 0
-    end
-    total     = params[:order][:total].to_i
-    if discount > 0
-      @price = (total - (total * (discount.to_f/100))).round(2)
-    else
-      @price = total
-    end
-    if @price > 0
+    @event        = PublicEvent.find_by_id(params[:order][:public_event_id])
+    @order        = Order.new(order_params)
+    @quantity     = params[:order][:quantity].to_i
+    @token        = Braintree::ClientToken.generate
+    discount_code = params[:order][:discount_code]
+    subtotal      = params[:order][:total].to_i
+    total         = CheckPromo.new(discount_code, subtotal).process_discount
+
+    # old code - pending delete
+    # if promo.valid?
+    #   discount = promo.discount
+    # else
+    #   discount = 0
+    # end
+
+    # if discount > 0
+    #   @price = (total - (total * (discount.to_f/100))).round(2)
+    # else
+    #   @price = total
+    # end
+
+    if total > 0
       nonce     = params[:payment_method_nonce]
       result    = Braintree::Transaction.sale(
         amount: @price,
