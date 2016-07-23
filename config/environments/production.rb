@@ -76,10 +76,18 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-  Braintree::Configuration.environment = :production
-  Braintree::Configuration.merchant_id = ENV['MERCHANT_ID']
-  Braintree::Configuration.public_key  = ENV['PUBLIC_KEY']
-  Braintree::Configuration.private_key = ENV['PRIVATE_KEY']
+
+  if ENV['SANDBOX']
+    Braintree::Configuration.environment = :sandbox
+    Braintree::Configuration.merchant_id = ENV['MERCHANT_ID']
+    Braintree::Configuration.public_key  = ENV['PUBLIC_KEY']
+    Braintree::Configuration.private_key = ENV['PRIVATE_KEY']
+  else
+    Braintree::Configuration.environment = :production
+    Braintree::Configuration.merchant_id = ENV['MERCHANT_ID']
+    Braintree::Configuration.public_key  = ENV['PUBLIC_KEY']
+    Braintree::Configuration.private_key = ENV['PRIVATE_KEY']
+  end
 
   config.action_mailer.smtp_settings = {
     :address   => "smtp.mandrillapp.com",
