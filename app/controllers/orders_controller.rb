@@ -33,7 +33,7 @@ class OrdersController < ApplicationController
     if total > 0
       nonce     = params[:payment_method_nonce]
       result    = Braintree::Transaction.sale(
-        amount: @price,
+        amount: total,
         payment_method_nonce: nonce,
           options: {
             submit_for_settlement: true
@@ -41,7 +41,7 @@ class OrdersController < ApplicationController
         )
       if result.transaction != nil
         @order.save
-        @order.update_attributes(public_event_id: @event.id, total: @price, payment_id: result.transaction.id)
+        @order.update_attributes(public_event_id: @event.id, total: total, payment_id: result.transaction.id)
         @order.order_create
         UserMailer.confirmation(@order).deliver_now
         redirect_to order_path(@order)
@@ -52,7 +52,7 @@ class OrdersController < ApplicationController
     else
       @order.save
       UserMailer.confirmation(@order).deliver_now
-      @order.update_attributes(public_event_id: @event.id, total: @price)
+      @order.update_attributes(public_event_id: @event.id, total: total)
       @order.order_create
       redirect_to order_path(@order)
     end
