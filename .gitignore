@@ -12,6 +12,7 @@
 !/log/.keep
 /tmp
 .env
+.note_log.md
 
 # Ignore application configuration
 /config/application.yml
