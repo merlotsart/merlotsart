@@ -15,10 +15,16 @@ window._fbq.push(['track', '6030086983528', {'value':'0.00','currency':'USD'}]);
 </script>
 <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6030086983528&amp;cd[value]=0.00&amp;cd[currency]=USD&amp;noscript=1" /></noscript>
 
+<div class="hero-landing clearfix">
+  <%= image_tag('contact-hero.jpg', alt: 'hero image') %>
+  <div class="hero-header">
+  </div>
+</div>
+
 <h1 class="orders-h1">Order Summary</h1>
 <section class="order-summary">
   <h2>
-    Success!  <%= @order.name.capitalize %>, thank you for your purchase.  An email will be sent shortly with your order confirmation.
+    Success!  <%= @order.name.titleize %>, thank you for your purchase.  An email will be sent shortly with your order confirmation.
   </h2>
   <table class="table">
     <tr>
