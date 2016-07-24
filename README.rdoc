@@ -1,3 +1,10 @@
+== Project Notes
+
+Enable sandbox billing mode in production by setting ENV['SANDBOX'] to `true`.
+Billing is in sandbox mode by default in development.
+
+
+
 == README
 
 This README would normally document whatever steps are necessary to get the
