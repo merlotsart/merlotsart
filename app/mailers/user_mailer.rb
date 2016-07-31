@@ -26,7 +26,7 @@ class UserMailer < ApplicationMailer
   def confirmation(order)
     @order = order
     @public_event = @order.public_event
-    mail(to: order.email, cc: 'info@merlotsart.com', subject: "Merlot's Art Class Confirmation")
+    mail(to: order.email, cc: 'hello@merlotsart.com', subject: "Merlot's Art Class Confirmation")
   end
 
   def reminder(attendee)
