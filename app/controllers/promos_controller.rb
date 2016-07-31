@@ -7,8 +7,6 @@ class PromosController < ApplicationController
         processed: promo.process_discount,
         discount: promo.discount,
         total: promo.total
-        # Need to either process the formatting to return based on promo type or
-        # return the type for procesing in JS
       }
     else
       render :json => {

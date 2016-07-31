@@ -60,10 +60,6 @@ class CheckPromo
     end
   end
 
-  # def promo
-  #   Promo.find_by(code: @code)
-  # end
-
   def discount
     if @promo.discount_type == 'percentage'
       "#{@promo.discount_percentage}%"
