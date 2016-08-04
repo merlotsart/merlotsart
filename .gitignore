@@ -12,6 +12,7 @@
 !/log/.keep
 /tmp
 .env
+.env.test
 .note_log.md
 
 # Ignore application configuration
