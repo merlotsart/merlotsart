@@ -31,30 +31,46 @@ class OrdersController < ApplicationController
     # end
 
     if total > 0
-      nonce     = params[:payment_method_nonce]
-      result    = Braintree::Transaction.sale(
-        amount: total,
-        payment_method_nonce: nonce,
-          options: {
-            submit_for_settlement: true
-          }
-        )
-      if result.transaction != nil
-        @order.save
-        @order.update_attributes(public_event_id: @event.id, total: total, payment_id: result.transaction.id)
-        @order.order_create
-        UserMailer.confirmation(@order).deliver_now
-        redirect_to order_path(@order)
+      # nonce     = params[:payment_method_nonce]
+      # result    = Braintree::Transaction.sale(
+      #   amount: total,
+      #   payment_method_nonce: nonce,
+      #     options: {
+      #       submit_for_settlement: true
+      #     }
+      #   )
+
+      nonce  = params[:payment_method_nonce]
+      result = ProcessBilling.process(nonce, total)
+
+      # if result.transaction != nil
+      #   @order.save
+      #   @order.update_attributes(public_event_id: @event.id, total: total, payment_id: result.transaction.id)
+      #   @order.order_create
+      #   UserMailer.confirmation(@order).deliver_now
+      #   redirect_to order_path(@order)
+      # else
+      #   flash[:notice] = "Sorry the card information was not correct, please try again."
+      #   render :new
+      # end
+
+      if result.success?
+        persist_order(result.transaction.id)
       else
         flash[:notice] = "Sorry the card information was not correct, please try again."
         render :new
       end
+
+    # else
+    #   @order.save
+    #   UserMailer.confirmation(@order).deliver_now
+    #   @order.update_attributes(public_event_id: @event.id, total: total)
+    #   @order.order_create
+    #   redirect_to order_path(@order)
+    # end
+
     else
-      @order.save
-      UserMailer.confirmation(@order).deliver_now
-      @order.update_attributes(public_event_id: @event.id, total: total)
-      @order.order_create
-      redirect_to order_path(@order)
+      persist_order
     end
   end
 
@@ -73,5 +89,13 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:name, :phone, :email, :public_event_id, :discount_code, :groupon_code, :quantity, :total, attendees_attributes: [:id, :name, :phone, :email, :discount_code])
+  end
+
+  def persist_order(transaction_id = nil)
+    @order.save
+    @order.update_attributes(public_event_id: @event.id, total: total, payment_id: transaction_id)
+    @order.order_create
+    UserMailer.confirmation(@order).deliver_now
+    redirect_to order_path(@order)
   end
 end
