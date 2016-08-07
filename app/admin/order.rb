@@ -21,6 +21,13 @@ ActiveAdmin.register Order do
       end
   end
 
+  member_action :email, method: :get do
+    order = Order.find(params[:id])
+    UserMailer.confirmation(order).deliver_now
+    flash[:notice] = "Email successfully sent"
+    redirect_to admin_order_path(order)
+  end
+
   member_action :refund, method: :post do
     order = Order.find(params[:id])
     order.attendees.where.not(name: nil).each do |attendee|
@@ -36,6 +43,10 @@ ActiveAdmin.register Order do
   end
 
   #action display in views
+  action_item :email, except: [:index] do
+    link_to("Resend Confirmation Email", email_admin_order_path(id: params[:id]))
+  end
+
   action_item :cancel, except: [:index] do
     link_to("Cancel Order", cancel_admin_order_path(id: params[:id]))
   end
