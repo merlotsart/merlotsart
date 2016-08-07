@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
       if result.success?
         persist_order(total, result.transaction.id)
       else
-        flash[:notice] = "Sorry the card information was not correct, please try again."
+        flash.now[:error] = "Sorry the card information was not correct, please try again."
         render :new
       end
 
