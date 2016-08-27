@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
+  get 'landing', to: 'landing#show'
+
   resources :public_events, only: [:index, :new, :create, :show]
   resources :private_events, only: [:new, :create, :show]
   resources :experiences, only: [:index]
