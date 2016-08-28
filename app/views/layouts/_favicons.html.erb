@@ -1,0 +1,14 @@
+<!-- Apple Icons -->
+<% %w(72 76 114 120 144 152 167 180).each do |size| %>
+  <%= favicon_link_tag "favicons/apple-touch-icon-#{size}x#{size}.png", rel: "apple-icon-touch", type: "image/png", sizes: "#{size}x#{size}" %>
+<% end %>
+
+<!-- Android Icons -->
+<% %w(48 72 96 144 192).each do |size| %>
+  <%= favicon_link_tag "favicons/icon-#{size}x#{size}.png", rel: "icon", type: "image/png", sizes: "#{size}x#{size}" %>
+<% end %>
+
+<!-- Favicon Icons -->
+<% %w(16 32).each do |size| %>
+  <%= favicon_link_tag "favicons/favicon-#{size}x#{size}.png", rel: "icon", type: "image/png", sizes: "#{size}x#{size}" %>
+<% end %>
