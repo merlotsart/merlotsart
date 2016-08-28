@@ -1,0 +1,101 @@
+
+@media (min-width: 992px) and (max-width: 1199px) {
+
+  .about-us-box h3 { margin-top: 0; }
+
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+  .section-description p { padding: 0; }
+
+  .inner-bg { padding: 140px 0 180px 0; }
+
+  .more-features-2-box h3 { margin-top: 0; }
+
+  .many-options-box h3 { margin-top: 0; }
+
+  .pricing-box-features ul li { padding: 5px 10px; }
+
+  .about-us-box h3 { margin-top: 0; }
+
+  .subscribe input[type="text"] { width: 330px; }
+
+  .footer-contact-info i { padding-right: 5px; font-size: 22px; }
+  .footer-social a { margin-right: 15px; }
+  .footer-social i { font-size: 22px; }
+  .footer-menu li { margin-left: 15px; }
+
+}
+
+@media (max-width: 767px) {
+
+  .navbar.navbar-no-bg { background: #444; }
+  .navbar-brand { margin-left: 15px; }
+  .navbar-collapse { border: 0; }
+  .navbar-inverse .navbar-toggle { border-color: transparent; }
+  .navbar-inverse ul.navbar-nav li a:hover, .navbar-inverse ul.navbar-nav li a:focus { padding-bottom: 10px; border-bottom: 1px solid transparent; }
+
+  .navbar-inverse ul.navbar-nav li a.btn-link-2 { margin-left: 15px; margin-right: 15px; }
+  .navbar-inverse ul.navbar-nav li a.btn-link-2:hover,
+  .navbar-inverse ul.navbar-nav li a.btn-link-2:focus,
+  .navbar-inverse ul.navbar-nav li a.btn-link-2:active,
+  .navbar-inverse ul.navbar-nav li a.btn-link-2:active:focus { outline: 0; opacity: 0.6; background: rgba(0, 0, 0, 0.3); border: 1px solid #fff; color: #fff; }
+
+  .section-description p { padding: 0; }
+
+  .inner-bg { padding: 80px 0 80px 0; }
+  .top-buttons { margin-top: 20px; }
+  .top-buttons a.btn { margin: 20px 5px 0 5px; }
+
+  .more-features-2-box { text-align: center; }
+  .more-features-2-box-right { padding-top: 30px; }
+
+  .many-options-box { text-align: center; }
+  .many-options-box-right { padding-top: 30px; text-align: center; }
+  .many-options-box h3 { margin-top: 0; }
+
+  .pricing-box { padding-bottom: 30px; }
+  .pricing-box:last-child { padding-bottom: 0; }
+  .pricing-box-features ul li { padding: 5px 10px; }
+
+  .about-us-box { text-align: center; }
+  .about-us-box-right { padding-top: 30px; }
+
+  .subscribe input[type="text"], .subscribe button { width: 100%; }
+
+  footer { text-align: center; }
+  .footer-contact-info, .footer-social { padding-top: 30px; }
+  .footer-contact-info i { padding-right: 5px; font-size: 22px; }
+  .footer-social a { margin: 0 10px; }
+  .footer-copyright { margin-top: 40px; }
+  .footer-menu { margin-top: 0; padding-top: 20px; border: 0; text-align: center; }
+  .footer-menu li { margin: 0 10px; }
+
+}
+
+@media (max-width: 415px) {
+
+  h1, h2 { font-size: 32px; }
+
+  .contact-top-right { font-size: 40px; line-height: 90px; }
+
+}
+
+
+/* Retina-ize images/icons */
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (   min--moz-device-pixel-ratio: 2),
+only screen and (     -o-min-device-pixel-ratio: 2/1),
+only screen and (        min-device-pixel-ratio: 2),
+only screen and (                min-resolution: 192dpi),
+only screen and (                min-resolution: 2dppx) {
+
+  /* logo */
+  .navbar-brand {
+    background-image: image-url("logo@2x.png") !important; background-repeat: no-repeat !important; background-size: 97px 29px !important;
+  }
+
+}
