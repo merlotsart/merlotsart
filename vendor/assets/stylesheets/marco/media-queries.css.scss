@@ -30,7 +30,7 @@
 
 @media (max-width: 767px) {
 
-  .navbar.navbar-no-bg { background: #444; }
+  .navbar.navbar-no-bg { background: #FCFCFC; }
   .navbar-brand { margin-left: 15px; }
   .navbar-collapse { border: 0; }
   .navbar-inverse .navbar-toggle { border-color: transparent; }
@@ -95,7 +95,8 @@ only screen and (                min-resolution: 2dppx) {
 
   /* logo */
   .navbar-brand {
-    background-image: image-url("logo@2x.png") !important; background-repeat: no-repeat !important; background-size: 97px 29px !important;
+    background-image: image-url("logo.png") !important; background-repeat:
+    no-repeat !important; background-size: 235px 39px !important;
   }
 
 }
