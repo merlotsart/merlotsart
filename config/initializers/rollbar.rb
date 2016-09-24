@@ -36,8 +36,10 @@ Rollbar.configure do |config|
   config.exception_level_filters.merge!('ActionController::RoutingError' => lambda { |e|
     e.message =~ %r(No route matches \[[A-Z]+\] "/(.+)")
     case $1.split("/").first.to_s.downcase
-    when *%w(myadmin phpmyadmin w00tw00t pma cgi-bin xmlrpc.php wp wordpress cfide
-             apple-touch-icon-120x120-precomposed)
+    when *%w(myadmin phpmyadmin w00tw00t pma cgi-bin xmlrpc.php wp wordpress cfide)
+      'ignore'
+    when *%w(apple-touch-icon-120x120-precomposed.png apple-touch-icon-precomposed.png
+             apple-touch-icon.png apple-touch-icon-120x120.png)
       'ignore'
     else
       'warning'
