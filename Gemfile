@@ -18,8 +18,10 @@ gem 'sass-css-importer'
 gem 'activeadmin', '~> 1.0.0.pre2'
 gem "obfuscate_id"
 gem 'active_admin_theme'
+gem 'bootstrap-sass', '~> 3.3.6'
 gem 'font-awesome-rails', '~> 4.5', '>= 4.5.0.1'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
+gem 'rollbar'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
@@ -35,8 +37,12 @@ end
 
 group :test do
   gem 'database_cleaner'
+  gem 'capybara'
+  gem 'poltergeist'
   gem 'shoulda-matchers', '~> 3.1', '>= 3.1.1'
   gem 'simplecov', :require => false
+  gem 'webmock', '~> 2.1'
+  gem 'vcr', '~> 3.0', '>= 3.0.3'
 end
 
 gem 'rails_12factor', group: :production
