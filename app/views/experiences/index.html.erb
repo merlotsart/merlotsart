@@ -98,7 +98,7 @@
   </section>
 <% else %>
   <section class="experience-info">
-    <% @public_events.each do |public_event| %>
+    <% Array(@public_events).each do |public_event| %>
       <% public_event.expired? ? event_class = "expired" : event_class = '' %>
       <div class="individual-class <%= "#{event_class}" %>">
         <%= link_to public_event_path(public_event) do %>
