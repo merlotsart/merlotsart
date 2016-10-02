@@ -12,35 +12,21 @@
   }
 }
 
-.p-30 {
-  padding: 30px !important;
-}
+.p-30 { padding: 30px !important; }
 
 .section-container-p-b-0 {
   margin: 0 auto;
   padding-bottom: 0;
 }
 
-.navbar-inverse .navbar-toggle {
-  border-color: #BB2184;
-}
+.hide-me { display: none !important; }
+.nav-purple { color: #BB2184 !important; }
+
+.navbar-inverse .navbar-toggle { border-color: #BB2184; }
+.navbar-inverse .navbar-toggle .icon-bar { background-color: #fff; }
 
 .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
   background-color: #BB2184;
-}
-
-.navbar-inverse .navbar-toggle .icon-bar {
-  background-color: #fff;
-}
-
-.merlots-logo-white-landing {
-  max-width: 240px;
-  background: image-url('logo.png') left center no-repeat;
-}
-
-.merlots-logo-color-landing {
-  max-width: 240px;
-  background: image-url('logo.png') left center no-repeat;
 }
 
 .top-nav-scroll-landing {
@@ -48,29 +34,6 @@
   background-color: #FCFCFC;
   background: #FCFCFC;
   border-color: transparent;
-
-  li a {
-    color: #BB2184 !important;
-    opacity: 0.9;
-  }
-
-  li a:hover {
-    background-color: transparent !important;
-    padding: 7px;
-    margin: 6px;
-  }
-
-  .licensee-link {
-    border: 2px solid #BB2184 !important;
-    border-radius: 7px;
-    padding: 7px !important;
-    margin: 6px !important;
-  }
-
-  .licensee-link:hover {
-    color: #fff;
-    background-color: #BB2184 !important;
-  }
 }
 
 .top-nav-scroll-reverse-landing {

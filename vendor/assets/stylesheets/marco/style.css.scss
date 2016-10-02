@@ -208,7 +208,7 @@ ul.navbar-nav {
 
 .navbar-brand {
   width: 240px;
-  background: image-url('logo.png') left center no-repeat;
+  padding: 7px 0 0 0;
   text-indent: -99999px;
 }
 
@@ -219,6 +219,8 @@ ul.navbar-nav {
 
 .top-content .text { color: #fff; }
 .top-content .text h1 { color: #fff; }
+
+.top-content .bg-black-trans { background-color: rgba(0,0,0,0.4); }
 
 .top-content .description { margin: 20px 0 10px 0; }
 .top-content .description p { opacity: 0.8; }

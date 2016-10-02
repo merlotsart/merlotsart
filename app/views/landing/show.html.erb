@@ -8,17 +8,19 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand merlots-logo-white" href="index.html">Merlots Art</a>
+      <%= link_to root_path, class: 'navbar-brand' do %>
+        <%= image_tag('merlotsart_logo_white.png', alt: 'Merlots Art', class: 'merlots-logo merlots-logo-white')%>
+        <%= image_tag('merlotsart_logo_color.png', alt: 'Merlots Art', class: 'merlots-logo merlots-logo-color hide-me')%>
+      <% end %>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="top-navbar-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a class="scroll-link" href="#top-content">Top</a></li>
-        <li><a class="scroll-link" href="#features">Features</a></li>
-        <li><a class="scroll-link" href="#pricing">Plans</a></li>
-        <li><a class="scroll-link" href="#how-it-works">How it works</a></li>
-        <li><a class="scroll-link" href="#about-us">About</a></li>
-        <li><a class="scroll-link" href="#contact">Contact</a></li>
+        <li><%= link_to('Become a Licensee', new_licensee_application_path) %></li>
+        <li><%= link_to('Classes', experiences_path(month: Date.today.month))  %></li>
+        <li><%= link_to('Private Events', new_private_event_path)  %></li>
+        <li><%= link_to('FAQ', pages_path(page: 'faq'))  %></li>
+        <li><%= link_to('Contact', pages_path(page: 'contact'))  %></li>
       </ul>
     </div>
   </div>
@@ -30,9 +32,9 @@
     <div class="container">
 
       <div class="row">
-        <div class="col-sm-8 col-sm-offset-2 text">
-          <h1 class="wow fadeInLeftBig"><strong>Introducing</strong> Custom Wall Art Serices</h1>
-          <div class="description wow fadeInLeftBig">
+        <div class="col-sm-8 col-sm-offset-2 text bg-black-trans">
+          <h1 class="wow fadeInUp"><strong>Introducing</strong> Custom Wall Art Serices</h1>
+          <div class="description wow fadeInUp" data-wow-delay=".3s">
             <p>
             Can't find the perfect wall art for your room?
             Let us create wall art to fit your needs
