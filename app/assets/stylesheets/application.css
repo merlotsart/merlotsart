@@ -14,6 +14,6 @@
  *= require datepicker/bootstrap-datepicker
  *= require clockpicker/clockpicker
  *= require base
- *= require_tree .
+ *= require legacy
  *= require_self
  */

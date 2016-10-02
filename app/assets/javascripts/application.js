@@ -15,5 +15,13 @@
 //= require accounting
 //= require datepicker/bootstrap-datepicker
 //= require clockpicker/clockpicker
-//= require_tree .
+//= require active_admin
+//= require delete
+//= require nav
+//= require order
+//= require private_events
+//= require promo
+//= require promos
+//= require registration
+//= require timer
 

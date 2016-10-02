@@ -22,5 +22,4 @@
 //= require marco/placeholder
 //= require marco/waypoints
 //= require marco/scripts
-//= require_tree .
 
