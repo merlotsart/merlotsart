@@ -6,8 +6,9 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-  get 'landing', to: 'landing#show'
+  get 'wallartservices', to: 'project_requests#new'
 
+  resources :project_requests, only: [:new, :create]
   resources :public_events, only: [:index, :new, :create, :show]
   resources :private_events, only: [:new, :create, :show]
   resources :experiences, only: [:index]

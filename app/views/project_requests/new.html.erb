@@ -33,15 +33,14 @@
 
       <div class="row">
         <div class="col-sm-8 col-sm-offset-2 text bg-black-trans">
-          <h1 class="wow fadeInUp"><strong>Introducing</strong> Custom Wall Art Serices</h1>
+          <h1 class="wow fadeInUp"><strong>Introducing</strong> Custom Wall Art Services</h1>
           <div class="description wow fadeInUp" data-wow-delay=".3s">
             <p>
             Can't find the perfect wall art for your room?
-            Let us create wall art to fit your needs
+            Let us create wall art to fit your needs. Starting at $59
             </p>
-            <p>
-            Starting at $49
-            </p>
+
+            <a class="btn btn-link-1 scroll-link" href="#start-project-form">LAUNCH YOUR PROJECT</a>
           </div>
         </div>
       </div>
@@ -91,7 +90,7 @@
         <%= image_tag "lp_step1.jpg", alt: "Project Kick-off", class: "img-responsive" %>
       </div>
       <div class="col-sm-4 features-box wow fadeInUp">
-        <%= image_tag "lp_step2.jpg", alt: "Project Kick-off", class: "img-responsive" %>
+        <%= image_tag "lp_step2_v2.jpg", alt: "Project Kick-off", class: "img-responsive" %>
       </div>
       <div class="col-sm-4 features-box wow fadeInUp">
         <%= image_tag "lp_step3.jpg", alt: "Project Kick-off", class: "img-responsive" %>
@@ -147,7 +146,7 @@
 </div>
 
 <!-- Start a Project -->
-<div class="features-container section-container">
+<div class="start-project-form-container section-container">
   <div class="container">
     <div class="row">
       <div class="col-sm-12 testimonials section-description wow fadeIn">
@@ -158,21 +157,26 @@
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 contact-box">
         <div class="contact-bottom">
-          <form role="form" action="assets/contact.php" method="post">
+          <%= form_for @project_request do |f| %>
+
             <div class="form-group">
-              <label for="contact-email">Email: <span class="contact-error"></span></label>
-              <input type="text" name="email" placeholder="Your email address..." class="contact-email form-control" id="contact-email">
+              <%= f.label :name, "Name:" %>
+              <%= f.text_field :name, placeholder: "Your name...", class: "form-control" %>
             </div>
             <div class="form-group">
-              <label for="contact-subject">Subject: <span class="contact-error"></span></label>
-              <input type="text" name="subject" placeholder="Message subject..." class="contact-subject form-control" id="contact-subject">
+              <%= f.label :email, "Email:" %>
+              <%= f.text_field :email, placeholder: "Your email address...", class: "form-control" %>
             </div>
             <div class="form-group">
-              <label for="contact-message">Message: <span class="contact-error"></span></label>
-              <textarea name="message" placeholder="Message text..." class="contact-message form-control" id="contact-message"></textarea>
+              <%= f.label :phone, "Phone:" %>
+              <%= f.text_field :phone, placeholder: "Your phone number...", class: "form-control" %>
             </div>
-            <button type="submit" class="btn">Send Message</button>
-          </form>
+            <div class="form-group">
+              <%= f.label :size, "Canvas Size:" %>
+              <%= f.select :size, grouped_options_for_select(ProjectRequest::SIZE_OPTIONS), { include_blank: true }, { class: "form-control" } %>
+            </div>
+            <%= f.button "Submit Request", class: "btn" %>
+          <% end %>
         </div>
       </div>
     </div>
@@ -187,8 +191,7 @@
         <h2>Get Updates</h2>
         <div class="divider-1 wow fadeInUp"><span></span></div>
         <p>
-        Enter your email address in the form below to subscribe for the latest updates that we send to our clients once a month.
-        Working MailChimp subscription form.
+        Enter your email address to get the latest updates about Merlot's Art
         </p>
       </div>
     </div>
@@ -213,11 +216,11 @@
 <footer>
   <div class="container">
     <div class="row">
-      <div class="col-sm-4 footer-about wow fadeInUp">
+      <div class="col-sm-5 footer-about wow fadeInUp">
         <h3>About Merlots Art</h3>
         <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.
-        Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper.
+        Create a one-of-a-kind masterpiece at our art &amp; wine studio or let us
+        create one for you through our custom wall art services.
         </p>
         <p>
         <a class="scroll-link" href="#about-us">Learn More</a>
@@ -229,7 +232,7 @@
         <p><i class="fa fa-phone"></i> Phone: (202) 810-5470</p>
         <p><i class="fa fa-envelope"></i> Email: <a href="mailto:hello@merlotsart.com">hello@merlotsart.com</a></p>
       </div>
-      <div class="col-sm-4 footer-social wow fadeInUp">
+      <div class="col-sm-3 footer-social wow fadeInUp">
         <h3>We're Social</h3>
         <p>
         <a href="https://www.facebook.com/MerlotsArt"><i class="fa fa-facebook"></i></a>
