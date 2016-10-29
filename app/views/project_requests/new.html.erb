@@ -1,20 +1,40 @@
 <!-- Top content -->
 <div class="top-content">
-  <div class="inner-bg">
+  <div class="inner-bg-landing">
     <div class="container">
 
       <div class="row">
-        <div class="col-sm-8 col-sm-offset-2 text bg-black-trans">
-          <h1 class="wow fadeInUp"><strong>Introducing</strong> Custom Wall Art Services</h1>
+        <!-- Left column -->
+        <div class="col-sm-4 col-sm-offset-8 text bg-black-trans">
+          <h1 class="wow fadeInUp"><strong>Introducing</strong> Custom<br>Wall Art Services</h1>
           <div class="description wow fadeInUp" data-wow-delay=".3s">
-            <p>
+            <h3 class="text-white">
             Can't find the perfect wall art for your room?
             Let us create wall art to fit your needs. Starting at $59
-            </p>
+            </h3>
 
-            <a class="btn btn-link-1 scroll-link" href="#start-project-form">LAUNCH YOUR PROJECT</a>
           </div>
+          <div class="header-form">
+            <%= form_for @project_request do |f| %>
+              <div class="form-inline">
+                <%= f.text_field :name, placeholder: "Name", class: "form-control" %>
+              </div>
+              <div class="form-inline">
+                <%= f.text_field :email, placeholder: "Email", class: "form-control" %>
+              </div>
+              <div class="form-inline">
+                <%= f.text_field :phone, placeholder: "Phone", class: "form-control" %>
+              </div>
+              <div class="form-inline">
+                <%= f.select :size, grouped_options_for_select(ProjectRequest::SIZE_OPTIONS), { include_blank: true, prompt: "Size" }, { class: "form-control" } %>
+              </div>
+              <%= f.submit "Start Your Free Consultation", class: "btn-submit" %>
+            <% end %>
+          </div>
+
         </div>
+
+
       </div>
 
     </div>

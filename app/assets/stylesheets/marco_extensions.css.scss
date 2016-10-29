@@ -29,6 +29,11 @@
   background-color: #BB2184;
 }
 
+.bg-purple-trans { background-color: rgba(187,33,132,0.5); }
+.bg-white-trans { background-color: rgba(255,255,255,0.5); }
+
+.text-white { color: white !important; }
+
 .nav-landing {
   transition: all 0.5s ease;
   background-color: #FCFCFC;
@@ -48,6 +53,33 @@
   background-color: transparent;
   background: transparent;
   border-color: transparent;
+}
+
+/***** Header *****/
+
+.inner-bg-landing {
+  padding: 100px 0 240px 0;
+}
+
+.header-form {
+  padding: 25px;
+  text-align: left;
+  //background-color: rgba(255,255,255,0.5);
+  //border: 2px solid white;
+}
+
+.header-form input[type=text] {
+  width: 100%;
+  margin: 0 0 5px 0;
+}
+
+.header-form select {
+  width: 100% !important;
+  margin: 0 0 5px 0;
+}
+
+.header-form option {
+  padding: 6px 12px;
 }
 
 .btn-submit::before {

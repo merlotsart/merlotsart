@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   get 'wall_art_services', to: 'project_requests#new'
-  get 'wall_art_services/request_received', to: 'project_requests#request_received'
+  get 'wall_art_services/request_received', to: 'project_requests#request_received', as: "request_received"
 
   get 'wallartservices', to: redirect('/wall_art_services')
 
