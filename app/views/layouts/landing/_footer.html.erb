@@ -1,0 +1,46 @@
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-5 footer-about wow fadeInUp">
+        <h3>About Merlots Art</h3>
+        <p>
+        Create a one-of-a-kind masterpiece at our art &amp; wine studio or let us
+        create one for you through our custom wall art services.
+        </p>
+        <p>
+        <a class="scroll-link" href="#about-us">Learn More</a>
+        </p>
+      </div>
+      <div class="col-sm-4 footer-contact-info wow fadeInDown">
+        <h3>Contact Info</h3>
+        <p><i class="fa fa-map-marker"></i> 1512 U Street NM, Washington, DC 20009</p>
+        <p><i class="fa fa-phone"></i> Phone: (202) 810-5470</p>
+        <p><i class="fa fa-envelope"></i> Email: <a href="mailto:hello@merlotsart.com">hello@merlotsart.com</a></p>
+      </div>
+      <div class="col-sm-3 footer-social wow fadeInUp">
+        <h3>We're Social</h3>
+        <p>
+        <a href="https://www.facebook.com/MerlotsArt"><i class="fa fa-facebook"></i></a>
+        <a href="https://twitter.com/merlotsart"><i class="fa fa-twitter"></i></a>
+        <a href="https://instagram.com/merlotsart/"><i class="fa fa-instagram"></i></a>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4 footer-copyright">
+        &copy; 2015-2016 Merlots Art
+      </div>
+      <div class="col-sm-8 footer-menu">
+        <ul>
+          <li><%= link_to('Become a Licensee', new_licensee_application_path) %></li>
+          <li><%= link_to('Classes', experiences_path(month: Date.today.month))  %></li>
+          <li><%= link_to('Private Events', new_private_event_path)  %></li>
+          <li><%= link_to('Contact Us', pages_path(page: 'contact'))  %></li>
+          <li><%= link_to('FAQ', pages_path(page: 'faq'))  %></li>
+          <li><a class="scroll-link" href="#top-content">Top</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
