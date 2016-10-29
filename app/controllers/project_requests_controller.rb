@@ -1,16 +1,21 @@
 class ProjectRequestsController < ApplicationController
 
-  layout 'application_alt'
+  layout 'landing'
 
   def new
     @project_request = ProjectRequest.new
   end
 
   def create
-    @project_request = ProjectRequest.build(secure_params)
-    if @project_requests.save
+    @project_request = ProjectRequest.new(secure_params)
+    if @project_request.save
+      redirect_to request_received_path
     else
+      render :new
     end
+  end
+
+  def request_received
   end
 
   private

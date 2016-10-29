@@ -1,31 +1,3 @@
-<!-- Top menu -->
-<nav class="navbar navbar-landing navbar-inverse navbar-fixed-top navbar-no-bg" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to root_path, class: 'navbar-brand' do %>
-        <%= image_tag('merlotsart_logo_white.png', alt: 'Merlots Art', class: 'merlots-logo merlots-logo-white')%>
-        <%= image_tag('merlotsart_logo_color.png', alt: 'Merlots Art', class: 'merlots-logo merlots-logo-color hide-me')%>
-      <% end %>
-    </div>
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="top-navbar-1">
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to('Become a Licensee', new_licensee_application_path) %></li>
-        <li><%= link_to('Classes', experiences_path(month: Date.today.month))  %></li>
-        <li><%= link_to('Private Events', new_private_event_path)  %></li>
-        <li><%= link_to('FAQ', pages_path(page: 'faq'))  %></li>
-        <li><%= link_to('Contact', pages_path(page: 'contact'))  %></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
 <!-- Top content -->
 <div class="top-content">
   <div class="inner-bg">
@@ -161,21 +133,21 @@
 
             <div class="form-group">
               <%= f.label :name, "Name:" %>
-              <%= f.text_field :name, placeholder: "Your name...", class: "form-control" %>
+              <%= f.text_field :name, class: "form-control" %>
             </div>
             <div class="form-group">
               <%= f.label :email, "Email:" %>
-              <%= f.text_field :email, placeholder: "Your email address...", class: "form-control" %>
+              <%= f.text_field :email, class: "form-control" %>
             </div>
             <div class="form-group">
               <%= f.label :phone, "Phone:" %>
-              <%= f.text_field :phone, placeholder: "Your phone number...", class: "form-control" %>
+              <%= f.text_field :phone, class: "form-control" %>
             </div>
             <div class="form-group">
               <%= f.label :size, "Canvas Size:" %>
               <%= f.select :size, grouped_options_for_select(ProjectRequest::SIZE_OPTIONS), { include_blank: true }, { class: "form-control" } %>
             </div>
-            <%= f.button "Submit Request", class: "btn" %>
+            <%= f.submit "Submit Request", class: "btn-submit" %>
           <% end %>
         </div>
       </div>

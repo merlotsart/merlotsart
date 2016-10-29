@@ -67,72 +67,72 @@ jQuery(document).ready(function() {
   /*
      Subscription form
    */
-  $('.subscribe .subscribe-email').on('focus', function(){
-    $(this).val('').removeClass('subscribe-error');
-  });
-  $('.subscribe form').on('submit', function(e) {
-    e.preventDefault();
-    var this_form = $(this);
-    var postdata = this_form.serialize();
-    $.ajax({
-      type: 'POST',
-      url: 'assets/subscribe.php',
-      data: postdata,
-      dataType: 'json',
-      success: function(json) {
-        if(json.valid == 0) {
-          $('.success-message').hide();
-          this_form.find('.subscribe-email').addClass('subscribe-error').val(json.message);
-          $('.subscribe form').addClass('animated shake').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-            $(this).removeClass('animated shake');
-          });
-        }
-        else {
-          this_form.hide();
-          $('.success-message').html(json.message).fadeIn('fast');
-        }
-      }
-    });
-  });
+  // $('.subscribe .subscribe-email').on('focus', function(){
+  //   $(this).val('').removeClass('subscribe-error');
+  // });
+  // $('.subscribe form').on('submit', function(e) {
+  //   e.preventDefault();
+  //   var this_form = $(this);
+  //   var postdata = this_form.serialize();
+  //   $.ajax({
+  //     type: 'POST',
+  //     url: 'assets/subscribe.php',
+  //     data: postdata,
+  //     dataType: 'json',
+  //     success: function(json) {
+  //       if(json.valid == 0) {
+  //         $('.success-message').hide();
+  //         this_form.find('.subscribe-email').addClass('subscribe-error').val(json.message);
+  //         $('.subscribe form').addClass('animated shake').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+  //           $(this).removeClass('animated shake');
+  //         });
+  //       }
+  //       else {
+  //         this_form.hide();
+  //         $('.success-message').html(json.message).fadeIn('fast');
+  //       }
+  //     }
+  //   });
+  // });
 
   /*
      Contact form
    */
-  $('.contact-box form').on('submit', function(e) {
-    e.preventDefault();
-    var this_form_parent = $(this).parents('.contact-box');
-    var postdata = $(this).serialize();
-    $.ajax({
-      type: 'POST',
-      url: 'assets/contact.php',
-      data: postdata,
-      dataType: 'json',
-      success: function(json) {
-        $('.contact-box label[for="contact-email"] .contact-error').fadeOut('fast', function(){
-          if(json.emailMessage != '') {
-            $(this).html('(' + json.emailMessage + ')').fadeIn('fast');
-          }
-        });
-        $('.contact-box label[for="contact-subject"] .contact-error').fadeOut('fast', function(){
-          if(json.subjectMessage != '') {
-            $(this).html('(' + json.subjectMessage + ')').fadeIn('fast');
-          }
-        });
-        $('.contact-box label[for="contact-message"] .contact-error').fadeOut('fast', function(){
-          if(json.messageMessage != '') {
-            $(this).html('(' + json.messageMessage + ')').fadeIn('fast');
-          }
-        });
-        if(json.emailMessage == '' && json.subjectMessage == '' && json.messageMessage == '') {
-          this_form_parent.find('.contact-top').fadeOut('fast');
-          this_form_parent.find('.contact-bottom').fadeOut('fast', function() {
-            this_form_parent.append('<p>Thanks for contacting us! We will get back to you very soon.</p>');
-            $('.contact-container').backstretch("resize");
-          });
-        }
-      }
-    });
-  });
+  // $('.contact-box form').on('submit', function(e) {
+  //   e.preventDefault();
+  //   var this_form_parent = $(this).parents('.contact-box');
+  //   var postdata = $(this).serialize();
+  //   $.ajax({
+  //     type: 'POST',
+  //     url: 'assets/contact.php',
+  //     data: postdata,
+  //     dataType: 'json',
+  //     success: function(json) {
+  //       $('.contact-box label[for="contact-email"] .contact-error').fadeOut('fast', function(){
+  //         if(json.emailMessage != '') {
+  //           $(this).html('(' + json.emailMessage + ')').fadeIn('fast');
+  //         }
+  //       });
+  //       $('.contact-box label[for="contact-subject"] .contact-error').fadeOut('fast', function(){
+  //         if(json.subjectMessage != '') {
+  //           $(this).html('(' + json.subjectMessage + ')').fadeIn('fast');
+  //         }
+  //       });
+  //       $('.contact-box label[for="contact-message"] .contact-error').fadeOut('fast', function(){
+  //         if(json.messageMessage != '') {
+  //           $(this).html('(' + json.messageMessage + ')').fadeIn('fast');
+  //         }
+  //       });
+  //       if(json.emailMessage == '' && json.subjectMessage == '' && json.messageMessage == '') {
+  //         this_form_parent.find('.contact-top').fadeOut('fast');
+  //         this_form_parent.find('.contact-bottom').fadeOut('fast', function() {
+  //           this_form_parent.append('<p>Thanks for contacting us! We will get back to you very soon.</p>');
+  //           $('.contact-container').backstretch("resize");
+  //         });
+  //       }
+  //     }
+  //   });
+  // });
 
 
 });

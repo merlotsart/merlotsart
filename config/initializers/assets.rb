@@ -3,8 +3,8 @@
 # Version of your assets, change this if you want to expire all your assets.
 Rails.application.config.assets.version = '1.0'
 
-Rails.application.config.assets.precompile += %w( application_alt.css )
-Rails.application.config.assets.precompile += %w( registration.js application_alt.js marco/placeholder.js )
+Rails.application.config.assets.precompile += %w( landing.css )
+Rails.application.config.assets.precompile += %w( registration.js landing.js marco/placeholder.js )
 
 Rails.application.config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
 Rails.application.config.assets.precompile += %w(*.svg *.eot *.woff *.ttf)

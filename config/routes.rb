@@ -6,7 +6,10 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-  get 'wallartservices', to: 'project_requests#new'
+  get 'wall_art_services', to: 'project_requests#new'
+  get 'wall_art_services/request_received', to: 'project_requests#request_received'
+
+  get 'wallartservices', to: redirect('/wall_art_services')
 
   resources :project_requests, only: [:new, :create]
   resources :public_events, only: [:index, :new, :create, :show]
@@ -20,7 +23,7 @@ Rails.application.routes.draw do
       get 'cancel'
     end
   end
-  get "/pages/:page" => "pages#show", as: 'pages'
+  get '/pages/:page' => 'pages#show', as: 'pages'
   resources :contacts, only: [:create]
-  post "/contacts/partner" => "contacts#partner"
+  post '/contacts/partner' => 'contacts#partner'
 end
