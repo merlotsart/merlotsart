@@ -19,6 +19,10 @@
   padding-bottom: 0;
 }
 
+.field_with_errors input, .field_with_errors select {
+  border: 2px solid #BB2184 !important;
+}
+
 .hide-me { display: none !important; }
 .nav-purple { color: #BB2184 !important; }
 

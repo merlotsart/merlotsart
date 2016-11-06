@@ -17,18 +17,18 @@
           <div class="header-form">
             <%= form_for @project_request do |f| %>
               <div class="form-inline">
-                <%= f.text_field :name, placeholder: "Name", class: "form-control" %>
+                <%= f.text_field :name, placeholder: "Name *", class: "form-control" %>
               </div>
               <div class="form-inline">
-                <%= f.text_field :email, placeholder: "Email", class: "form-control" %>
+                <%= f.text_field :email, placeholder: "Email *", class: "form-control" %>
               </div>
               <div class="form-inline">
                 <%= f.text_field :phone, placeholder: "Phone", class: "form-control" %>
               </div>
               <div class="form-inline">
-                <%= f.select :size, grouped_options_for_select(ProjectRequest::SIZE_OPTIONS), { include_blank: true, prompt: "Size" }, { class: "form-control" } %>
+                <%= f.select :size, options_for_select(ProjectRequest::RECTANGLE_CANVAS_SIZES), { include_blank: true, prompt: "Size *" }, { class: "form-control" } %>
               </div>
-              <%= f.submit "Start Your Free Consultation", class: "btn-submit" %>
+              <%= f.submit "Start A Project", class: "btn-submit" %>
             <% end %>
           </div>
 
@@ -42,7 +42,7 @@
 </div>
 
 <!-- How it Works -->
-<div class="features-container section-container">
+<div class="features-container section-container hidden-xs">
   <div class="container">
     <div class="row">
       <div class="col-sm-12 features section-description wow fadeIn">
@@ -91,8 +91,56 @@
   </div>
 </div>
 
+<!-- How It Works Mobile -->
+<div class="features-container section-container visible-xs-block">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 features section-description wow fadeIn">
+        <h2>How it Works</h2>
+        <div class="divider-1 wow fadeInUp"><span></span></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4 features-box wow fadeInUp">
+        <h3>Project Kick-Off</h3>
+        <p>
+        Complete a short form to give us the initial details of your space
+        and desired wall art style. You can choose our virtual service or
+        schedule an appointment at our Washington, DC studio for a one-on-one
+        design consultation with a Merlot's Art artist.
+        </p>
+        <div class="col-sm-4 features-box wow fadeInUp">
+          <%= image_tag "lp_step1.jpg", alt: "Project Kick-off", class: "img-responsive" %>
+        </div>
+      </div>
+      <div class="col-sm-4 features-box wow fadeInDown">
+        <h3>Concept Phase</h3>
+        <p>
+        Either at our Washington, DC studio or virtually, a Merlot's Art artist
+        will work with you to get more details about color selection. At that
+        time, you can send photos of your space and any photo inspiration.
+        </p>
+        <div class="col-sm-4 features-box wow fadeInUp">
+          <%= image_tag "lp_step2_v2.jpg", alt: "Project Kick-off", class: "img-responsive" %>
+        </div>
+      </div>
+      <div class="col-sm-4 features-box wow fadeInUp">
+        <h3>Design & Delivery</h3>
+        <p>
+        You pay 50% up front and  we will begin the design process. We will
+        share a photo of the finished art for you to approve. Once you pay the
+        remaining 50%, we ship your custom art directly to you!
+        </p>
+        <div class="col-sm-4 features-box wow fadeInUp">
+          <%= image_tag "lp_step3.jpg", alt: "Project Kick-off", class: "img-responsive" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Pricing -->
-<div class="more-features-container section-container-p-b-0 section-container-gray-bg">
+<div class="more-features-container section-container-p-b-0 section-container-gray-bg hidden-xs">
   <div class="row">
     <div class="col-sm-12 features section-description wow fadeIn">
       <h2>Pricing</h2>
@@ -104,7 +152,7 @@
       <%= image_tag "lp_11x14_example_2.jpg", :title => "11x14" %>
     </div>
     <div class="col-sm-6 more-features-2-box more-features-2-box-right p-30 wow fadeInUp">
-      <h2>$49 - 11x14" canvas art<br />3 canvas set for $99</h2>
+      <h2>$59 - 11x14" canvas art<br />3 canvas set for $99</h2>
       <h3>
         This size is perfect for small spaces or to add final touches to a
         gallery wall. Abstract style only.
@@ -137,6 +185,52 @@
   </div>
 </div>
 
+<!-- Pricing mobile -->
+<div class="more-features-container section-container-p-b-0 section-container-gray-bg visible-xs-block">
+  <div class="row">
+    <div class="col-sm-12 features section-description wow fadeIn">
+      <h2>Pricing</h2>
+      <div class="divider-1 wow fadeInUp"><span></span></div>
+    </div>
+  </div>
+  <div class="row no-gutters">
+    <div class="col-sm-6 more-features-2-box wow fadeInLeft">
+      <%= image_tag "lp_11x14_example_2.jpg", :title => "11x14" %>
+    </div>
+    <div class="col-sm-6 more-features-2-box more-features-2-box-right p-30 wow fadeInUp">
+      <h2>$59 - 11x14" canvas art<br />3 canvas set for $99</h2>
+      <h3>
+        This size is perfect for small spaces or to add final touches to a
+        gallery wall. Abstract style only.
+      </h3>
+    </div>
+  </div>
+  <div class="row no-gutters">
+    <div class="col-sm-6 more-features-2-box wow fadeInLeft">
+      <%= image_tag "lp_16x20_example_2.jpg", :title => "16x20" %>
+    </div>
+    <div class="col-sm-6 more-features-2-box more-features-2-box-right p-30 wow fadeInUp">
+      <h2>$79 - 16x20" canvas art<br />2 canvas set for $129</h2>
+      <h3>
+        This size is good for all spaces and can be used to build a gallery
+        wall. This size is also perfect to add a pop of color to your walls.
+      </h3>
+    </div>
+  </div>
+  <div class="row no-gutters">
+    <div class="col-sm-6 more-features-2-box wow fadeInLeft">
+      <%= image_tag "lp_30x40_example.jpg", :title => "30x40" %>
+    </div>
+    <div class="col-sm-6 more-features-2-box more-features-2-box-right p-30 wow fadeInUp">
+      <h2>$159 - 30x40" canvas art</h2>
+      <h3>
+        This size is good for all spaces and can be used to build a gallery
+        wall. This size is also perfect to add a pop of color to your walls.
+      </h3>
+    </div>
+  </div>
+</div>
+
 <!-- Start a Project -->
 <div class="start-project-form-container section-container">
   <div class="container">
@@ -152,11 +246,11 @@
           <%= form_for @project_request do |f| %>
 
             <div class="form-group">
-              <%= f.label :name, "Name:" %>
+              <%= f.label :name, "Name: *" %>
               <%= f.text_field :name, class: "form-control" %>
             </div>
             <div class="form-group">
-              <%= f.label :email, "Email:" %>
+              <%= f.label :email, "Email: *" %>
               <%= f.text_field :email, class: "form-control" %>
             </div>
             <div class="form-group">
@@ -164,10 +258,10 @@
               <%= f.text_field :phone, class: "form-control" %>
             </div>
             <div class="form-group">
-              <%= f.label :size, "Canvas Size:" %>
-              <%= f.select :size, grouped_options_for_select(ProjectRequest::SIZE_OPTIONS), { include_blank: true }, { class: "form-control" } %>
+              <%= f.label :size, "Canvas Size: *" %>
+              <%= f.select :size, options_for_select(ProjectRequest::RECTANGLE_CANVAS_SIZES), { include_blank: true }, { class: "form-control" } %>
             </div>
-            <%= f.submit "Submit Request", class: "btn-submit" %>
+            <%= f.submit "Start A Project", class: "btn-submit" %>
           <% end %>
         </div>
       </div>
