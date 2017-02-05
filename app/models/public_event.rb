@@ -10,18 +10,37 @@ class PublicEvent < ActiveRecord::Base
   after_create :create_slots
   after_update :update_slots
 
-  validates_presence_of :name, :description, :date, :start_time, :artist_id, :available_slots, :end_time, :price, :experience, :location, :artist, :byob_fee
+  validates_presence_of :name,
+                        :description,
+                        :date,
+                        :start_time,
+                        :artist_id,
+                        :available_slots,
+                        :end_time,
+                        :price,
+                        :experience,
+                        :location,
+                        :artist
 
-  has_attached_file :image, :styles => { :medium => "300x300>", :small => "200x200#", :thumb => "100x100#" }, :default_url => "/images/missing/:style/missing.png", :storage => :s3, :bucket => "classphotos", :url =>':s3_domain_url',
-  :path => '/:class/:attachment/:id_partition/:style/:filename'
+  has_attached_file :image, :styles => { :medium => "300x300>",
+                                         :small => "200x200#",
+                                         :thumb => "100x100#" },
+                            :default_url => "/images/missing/:style/missing.png",
+                            :storage => :s3,
+                            :bucket => "classphotos",
+                            :url =>':s3_domain_url',
+                            :path => '/:class/:attachment/:id_partition/:style/:filename'
+
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+
+  scope :upcoming, -> { unscoped.where("date >= ?", Date.today).order(date: :asc) }
 
 
   def quantity_available
     num_slots_unsold - num_slots_locked
   end
 
-   def num_slots_unsold
+  def num_slots_unsold
     slots_unsold.count
   end
 

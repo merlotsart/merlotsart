@@ -78,6 +78,13 @@ ActiveAdmin.register PublicEvent do
   #index per page count
   config.per_page = 10
 
+  #remove batch actions button from index
+  config.batch_actions = false
+
+  #index scopes
+  scope :all, default: true
+  scope :upcoming
+
   #index columns
   index do
     selectable_column
