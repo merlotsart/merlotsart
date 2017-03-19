@@ -98,4 +98,27 @@ ActiveAdmin.register Order do
   filter :phone
   filter :status
   filter :public_event
+
+  csv do
+    column :id
+    column :name
+    column :status
+    column :email
+    column :phone
+    column :total
+    column :quantity
+
+    column(:event_attended) do |order|
+      if order.public_event
+        order.public_event.name
+      elsif order.private_event
+        order.private_event.name
+      else
+        "No class found"
+      end
+    end
+
+    column :discount_code
+    column :groupon_code
+  end
 end

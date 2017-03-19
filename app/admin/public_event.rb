@@ -166,4 +166,36 @@ ActiveAdmin.register PublicEvent do
   filter :date
   filter :name
   filter :live
+
+  csv do
+    column :id
+    column :name
+
+    column :location do |public_event|
+      public_event.location.name
+    end
+
+    column :seats_sold do |public_event|
+      public_event.num_slots_sold.to_s + " of " + public_event.available_slots.to_s
+    end
+
+    column :artist do |public_event|
+      public_event.artist.name
+    end
+
+    column :date
+
+    column :time do |public_event|
+      public_event.start_time.strftime("%l:%M%P") + "-" + public_event.end_time.strftime("%l:%M%P")
+    end
+
+    column :price
+    column :byob_fee
+    column :unlimited_wine
+    column :unlimited_mimosas
+    column :voucher_upgrade_fee
+    column :groupon
+    column :live
+
+  end
 end
