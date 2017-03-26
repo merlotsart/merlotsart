@@ -120,5 +120,6 @@ ActiveAdmin.register Order do
 
     column :discount_code
     column :groupon_code
+    column :created_at
   end
 end
